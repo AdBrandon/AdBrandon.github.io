@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>viewport的深入理解 | Brandon&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的viewport了，只有明白了viewport的概念以及弄清楚了跟viewport有关的meta标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。">
+<meta name="keywords" content="HTML,mobile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="viewport的深入理解">
+<meta property="og:url" content="http://brandon.vc/2017/02/23/viewport的深入理解/index.html">
+<meta property="og:site_name" content="Brandon&#39;s blog">
+<meta property="og:description" content="在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的viewport了，只有明白了viewport的概念以及弄清楚了跟viewport有关的meta标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://brandon.vc/images/article/viewport01.png">
+<meta property="og:image" content="http://brandon.vc/images/article/viewport02.png">
+<meta property="og:image" content="http://brandon.vc/images/article/viewport03.png">
+<meta property="og:image" content="http://brandon.vc/images/article/viewport04.png">
+<meta property="og:updated_time" content="2017-07-15T02:39:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="viewport的深入理解">
+<meta name="twitter:description" content="在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的viewport了，只有明白了viewport的概念以及弄清楚了跟viewport有关的meta标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。">
+<meta name="twitter:image" content="http://brandon.vc/images/article/viewport01.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Brandon&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Brandon&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://brandon.vc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-viewport的深入理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/23/viewport的深入理解/" class="article-date">
+  <time datetime="2017-02-23T05:43:15.000Z" itemprop="datePublished">2017-02-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CSS/">CSS</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      viewport的深入理解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的<code>viewport</code>了，只有明白了<code>viewport</code>的概念以及弄清楚了跟<code>viewport</code>有关的<code>meta</code>标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。<br><a id="more"></a></p>
+<h2 id="viewport的概念"><a href="#viewport的概念" class="headerlink" title="viewport的概念"></a>viewport的概念</h2><p>在默认情况下，移动设备上的viewport都是要大于浏览器可视区域的，这是因为考虑到移动设备的分辨率相对于桌面电脑来说都比较小，所以为了能在移动设备上正常显示那些传统的为桌面浏览器设计的网站，移动设备上的浏览器都会把自己默认的viewport设为980px或1024px（也可能是其它值，这个是由设备自己决定的），但带来的后果就是浏览器会出现横向滚动条，因为浏览器可视区域的宽度是比这个默认的viewport的宽度要小的。下图列出了一些设备上浏览器的默认viewport的宽度。<br><img src="/images/article/viewport01.png" alt="viewport"></p>
+<h2 id="css中的1px并不等于设备的1px"><a href="#css中的1px并不等于设备的1px" class="headerlink" title="css中的1px并不等于设备的1px"></a>css中的1px并不等于设备的1px</h2><p>css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。<br>移动设备的屏幕像素密度影响css像素。例如iphone4的一个css像素是等于两个物理像素的。</p>
+<h2 id="三个viewport"><a href="#三个viewport" class="headerlink" title="三个viewport"></a>三个viewport</h2><h3 id="layout-viewport"><a href="#layout-viewport" class="headerlink" title="layout viewport"></a>layout viewport</h3><ul>
+<li>浏览器默认的viewport</li>
+</ul>
+<p>可以通过<code>document.documentElement.clientWidth</code>来获取</p>
+<blockquote>
+<p>如果把移动设备上浏览器的可视区域设为viewport的话，某些网站就会因为viewport太窄而显示错乱，所以这些浏览器就决定默认情况下把viewport设为一个较宽的值，比如980px，这样的话即使是那些为桌面设计的网站也能在移动浏览器上正常显示了。</p>
+</blockquote>
+<p><img src="/images/article/viewport02.png" alt="viewport"></p>
+<h3 id="visual-viewport"><a href="#visual-viewport" class="headerlink" title="visual viewport"></a>visual viewport</h3><ul>
+<li>浏览器可视区域的大小</li>
+</ul>
+<p>通过<code>window.innerWidth</code>来获取<br><img src="/images/article/viewport03.png" alt="viewport"></p>
+<h3 id="ideal-viewport"><a href="#ideal-viewport" class="headerlink" title="ideal viewport"></a>ideal viewport</h3><ul>
+<li>移动设备的理想viewport</li>
+</ul>
+<p><code>ideal viewport</code>并没有一个固定的尺寸，不同的设备拥有有不同的<code>ideal viewport</code>。所有的iphone的<code>ideal viewport</code>宽度都是320px，无论它的屏幕宽度是320还是640，也就是说，在iphone中，css中的320px就代表iphone屏幕的宽度。<br><img src="/images/article/viewport04.png" alt="viewport"></p>
+<h2 id="利用meta标签对viewport进行控制"><a href="#利用meta标签对viewport进行控制" class="headerlink" title="利用meta标签对viewport进行控制"></a>利用meta标签对viewport进行控制</h2><p>移动设备默认的viewport是<code>layout viewport</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>该meta标签的作用是让当前viewport的宽度等于设备的宽度，同时不允许用户手动缩放。</p>
+<p><code>meta viewport</code> 有6个属性：</p>
+<ul>
+<li><code>width</code>    设置layout viewport  的宽度，为一个正整数，或字符串”width-device”</li>
+<li><code>initial-scale</code>    设置页面的初始缩放值，为一个数字，可以带小数</li>
+<li><code>minimum-scale</code>    允许用户的最小缩放值，为一个数字，可以带小数</li>
+<li><code>maximum-scale</code>    允许用户的最大缩放值，为一个数字，可以带小数</li>
+<li><code>height</code>    设置layout viewport  的高度，这个属性对我们并不重要，很少使用</li>
+<li><code>user-scalable</code>    是否允许用户进行缩放，值为”no”或”yes”, no 代表不允许，yes代表允许</li>
+</ul>
+<p>这些属性可以同时使用，也可以单独使用或混合使用，多个属性同时使用用逗号隔开。</p>
+<h3 id="把当前的viewport宽度设置为-ideal-viewport-的宽度"><a href="#把当前的viewport宽度设置为-ideal-viewport-的宽度" class="headerlink" title="把当前的viewport宽度设置为 ideal viewport 的宽度"></a>把当前的viewport宽度设置为 ideal viewport 的宽度</h3><ul>
+<li>把<code>width</code>设为<code>width-device</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>&gt;</span></div><div class="line">下图是这句代码在各大移动端浏览器上的测试结果：</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在iphone和ipad上，无论是竖屏还是横屏，宽度都是竖屏时ideal viewport的宽度。</p>
+</blockquote>
+<ul>
+<li>设置页面的初始缩放值为1<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>缩放是相对于 ideal viewport来进行缩放的，当缩放值为1的时候，就得到了 ideal viewport。</p>
+</blockquote>
+<ul>
+<li><code>width</code> 和 <code>initial-scale=1</code>冲突时<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=400, initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>浏览器会取它们两个中较大的那个值。</p>
+<ul>
+<li>最完美的写法</li>
+</ul>
+<p>两者都写上去，这样就 initial-scale=1 解决了 iphone、ipad的毛病，width=device-width则解决了IE的毛病：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="动态改变meta-viewport标签"><a href="#动态改变meta-viewport标签" class="headerlink" title="动态改变meta viewport标签"></a>动态改变meta viewport标签</h2><ul>
+<li><code>document.write</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.write(<span class="string">'&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><code>setAttribute</code></li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">id</span>=<span class="string">"testViewport"</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width = 380"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript"><span class="keyword">var</span> mvp = <span class="built_in">document</span>.getElementById(<span class="string">'testViewport'</span>);</span></div><div class="line"><span class="javascript">mvp.setAttribute(<span class="string">'content'</span>,<span class="string">'width=480'</span>);</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><ul>
+<li><p>如果不设置<code>meta viewport</code>标签，那么移动设备上浏览器默认的宽度值大于屏幕宽度的。</p>
+</li>
+<li><p>每个移动设备浏览器中都有一个理想的宽度，这个宽度就相当于CSS中的100%的所代表的那个宽度。</p>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1"</span>&gt;</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://brandon.vc/2017/02/23/viewport的深入理解/" data-id="cj7rpo3ln001k9uu2opl8efth" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/">mobile</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/05/添加移除事件、阻止冒泡浏览器默认行为的兼容写法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          添加移除事件、阻止冒泡浏览器默认行为的兼容写法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/17/移动前端开发的几个小技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">移动前端开发的几个小技巧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript扩展/">JavaScript扩展</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript框架/">JavaScript框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动开发/">移动开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tip/">tip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 18px;">CSS</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/HTML/" style="font-size: 16px;">HTML</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/mobile/" style="font-size: 14px;">mobile</a> <a href="/tags/responsive/" style="font-size: 14px;">responsive</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/简历/" style="font-size: 10px;">简历</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/20/我的简历/">我的简历</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/jQuery 插件封装的方法/">jQuery 插件封装的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/原生js获取鼠标坐标方法/">原生js获取鼠标坐标方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/02/TypeScript入门/">TypeScript入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/Git基础/">Git基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Brandon<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

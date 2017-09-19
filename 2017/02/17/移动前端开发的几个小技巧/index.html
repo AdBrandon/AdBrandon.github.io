@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>移动前端开发的几个小技巧 | Brandon&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="移动前端开发正逐渐步入前端技术的主流，事实上跟在一般的pc上，并不需要你掌握额外的技术，然而你在pc web上那一套在多数情况下并不适用于手机web，你必须知道这其中的注意点。">
+<meta name="keywords" content="JavaScript,mobile">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动前端开发的几个小技巧">
+<meta property="og:url" content="http://brandon.vc/2017/02/17/移动前端开发的几个小技巧/index.html">
+<meta property="og:site_name" content="Brandon&#39;s blog">
+<meta property="og:description" content="移动前端开发正逐渐步入前端技术的主流，事实上跟在一般的pc上，并不需要你掌握额外的技术，然而你在pc web上那一套在多数情况下并不适用于手机web，你必须知道这其中的注意点。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-15T03:58:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动前端开发的几个小技巧">
+<meta name="twitter:description" content="移动前端开发正逐渐步入前端技术的主流，事实上跟在一般的pc上，并不需要你掌握额外的技术，然而你在pc web上那一套在多数情况下并不适用于手机web，你必须知道这其中的注意点。">
+  
+    <link rel="alternate" href="/atom.xml" title="Brandon&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Brandon&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://brandon.vc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-移动前端开发的几个小技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/移动前端开发的几个小技巧/" class="article-date">
+  <time datetime="2017-02-17T09:54:28.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/移动开发/">移动开发</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      移动前端开发的几个小技巧
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>移动前端开发正逐渐步入前端技术的主流，事实上跟在一般的pc上，并不需要你掌握额外的技术，然而你在pc web上那一套在多数情况下并不适用于手机web，你必须知道这其中的注意点。<br><a id="more"></a></p>
+<h2 id="meta标签"><a href="#meta标签" class="headerlink" title="meta标签"></a>meta标签</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"</span> <span class="attr">name</span>=<span class="string">"viewport"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"yes"</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-capable"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"black"</span> <span class="attr">name</span>=<span class="string">"apple-mobile-web-app-status-bar-style"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"telephone=no"</span> <span class="attr">name</span>=<span class="string">"format-detection"</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>第一个meta标签表示：强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且不允许用户点击屏幕放大浏览；</li>
+<li>第二个meta标签是iphone设备中的safari私有meta标签，它表示：允许全屏模式浏览；</li>
+<li>第三个meta标签也是iphone的私有标签，它指定的iphone中safari顶端的状态条的样式；</li>
+<li>第四个meta标签表示：告诉设备忽略将页面中的数字识别为电话号码</li>
+</ul>
+<h2 id="HTML5标签"><a href="#HTML5标签" class="headerlink" title="HTML5标签"></a>HTML5标签</h2><p>HTML5可以实现一些丰富的WEB应用程序的体验，可以减少开发者很多的工作量。比如定义一块内容或文章区域可使用<code>section</code>标签，定义导航条或选项卡可以直接使用<code>nav</code>标签等等。</p>
+<h2 id="放弃CSS-float属性"><a href="#放弃CSS-float属性" class="headerlink" title="放弃CSS float属性"></a>放弃CSS float属性</h2><p>在项目开发过程中可以会遇到内容排列显示的布局，假如你遇见这样的视觉稿，建议你放弃float，可以直接使用<code>display:inline-block</code>;</p>
+<h2 id="利用CSS3边框背景属性"><a href="#利用CSS3边框背景属性" class="headerlink" title="利用CSS3边框背景属性"></a>利用CSS3边框背景属性</h2><p>这个按钮有圆角效果，有内发光效果还有高光效果，这样的按钮使用CSS3写是无法写出来的，当然圆角可以使用CSS3来写，但高光和内发光却无法使用CSS3编写，</p>
+<p>这个时候你不妨使用<code>-webkit-border-image</code>来定义这个按钮的样式。<br><code>-webkit-border-image</code>就个很复杂的样式属性。</p>
+<h2 id="块级化a标签"><a href="#块级化a标签" class="headerlink" title="块级化a标签"></a>块级化a标签</h2><p>请保证将每条数据都放在一个<code>a</code>标签中，为何这样做？因为在触控手机上，为提升用户体验，尽可能的保证用户的可点击区域较大。</p>
+<h2 id="自适应布局模式"><a href="#自适应布局模式" class="headerlink" title="自适应布局模式"></a>自适应布局模式</h2><p>为达到适配各种手持设备，建议前端工程师使用自适应布局模式，因为这样做可以让你的页面在ipad、itouch、ipod、iphone、android、web safarik、chrome都能够正常的显示，你无需再次考虑设备的分辨率。</p>
+<h2 id="使用webkit-box"><a href="#使用webkit-box" class="headerlink" title="使用webkit-box"></a>使用webkit-box</h2><p>webkit为<code>display</code>属性提供了一个<code>webkit-box</code>的值，它可以帮助前端工程师做到盒子模型灵活控制。</p>
+<h2 id="去除Android对邮箱地址的识别"><a href="#去除Android对邮箱地址的识别" class="headerlink" title="去除Android对邮箱地址的识别"></a>去除Android对邮箱地址的识别</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">"email=no"</span> <span class="attr">name</span>=<span class="string">"format-detection"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="去除URL的控件条"><a href="#去除URL的控件条" class="headerlink" title="去除URL的控件条"></a>去除URL的控件条</h2><p>可以利用一句简单的javascript代码来实现这个效果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">setTimeout(scrollTo,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这句代码必须放在window.onload里才能够正常的工作，而且你的当前文档的内容高度必须是高于窗口的高度时，这句代码才能有效的执行。</p>
+</blockquote>
+<h2 id="检测用户通过主屏启动"><a href="#检测用户通过主屏启动" class="headerlink" title="检测用户通过主屏启动"></a>检测用户通过主屏启动</h2><p>iOS中浏览器直接访问站点时，<code>navigator.standalone</code>为<code>false</code>,从主屏启动webapp 时，<code>navigator.standalone</code>为<code>true</code>， 我们可以通过<code>navigator.standalone</code>这个属性获知用户当前是否是从主屏访 问我们的webapp的。</p>
+<h2 id="关闭iOS中键盘自动大写"><a href="#关闭iOS中键盘自动大写" class="headerlink" title="关闭iOS中键盘自动大写"></a>关闭iOS中键盘自动大写</h2><p>移动版本 webkit为<code>input</code>元素提供了<code>autocapitalize</code>属性，通过指定<code>autocapitalize=”off”</code>来关闭键盘默认首字母大写。</p>
+<h2 id="禁止用户在新窗口打开页面"><a href="#禁止用户在新窗口打开页面" class="headerlink" title="禁止用户在新窗口打开页面"></a>禁止用户在新窗口打开页面</h2><p>使用a标签的<code>target=”_self“</code>来指定用户在新窗口打开，或者<code>target</code>属性保持空，但是你会发现iOS的用户在这个链接的上方长按3秒钟后，iOS会弹出一个列表按钮，用户通过这些按钮仍然可以在新窗口打开页面。<br>可以通过指定当前元素的<code>-webkit-touch-callout</code>样式属性为<code>none</code>来禁止iOS弹出这些按钮。这个技巧仅适用iOS对于Android平台则无效。</p>
+<h2 id="禁止用户保存图片＼复制图片"><a href="#禁止用户保存图片＼复制图片" class="headerlink" title="禁止用户保存图片＼复制图片"></a>禁止用户保存图片＼复制图片</h2><p>为一个<code>img</code>标签指定<code>-webkit-touch-callout</code>为<code>none</code>也会禁止设备弹出列表按钮，这样用户就无法保存＼复制你的图片了。</p>
+<h2 id="禁止用户选中文字"><a href="#禁止用户选中文字" class="headerlink" title="禁止用户选中文字"></a>禁止用户选中文字</h2><p>通过指定文字标签的<code>-webkit-user-select</code>属性为<code>none</code>便可以禁止iOS用户选中文字。</p>
+<h2 id="获取滚动条的值"><a href="#获取滚动条的值" class="headerlink" title="获取滚动条的值"></a>获取滚动条的值</h2><p>Android中通过document.scrollTop和document.scrollLeft得到。<br>iOS中通过window.scrollY和window.scrollX我们可以得到当前窗口的y轴和x轴滚动条的值。</p>
+<h2 id="解决盒子边框溢出"><a href="#解决盒子边框溢出" class="headerlink" title="解决盒子边框溢出"></a>解决盒子边框溢出</h2><p><code>-webkit-box-sizing:border-box;</code>指定该盒子的大小包括边框的宽度。</p>
+<h2 id="android平台中页面无法自适应"><a href="#android平台中页面无法自适应" class="headerlink" title="android平台中页面无法自适应"></a>android平台中页面无法自适应</h2><p>虽然你的html和css都是完全自适应的，但有一天如果你发现你的页面在android中显示的并不是自适应的时候，首先请你确认你的head标签中是否包含以下meta标签：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0;"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>如果有的话，那请你再仔细的看清楚有没有这个属性的值<code>width=device-width</code>，如果没有请立即加上吧！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://brandon.vc/2017/02/17/移动前端开发的几个小技巧/" data-id="cj7rpo3mo002g9uu2wcxxjxnq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobile/">mobile</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/02/23/viewport的深入理解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          viewport的深入理解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/15/利用@media screen实现网页布局的自适应/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">利用@media实现网页布局的自适应</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript扩展/">JavaScript扩展</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript框架/">JavaScript框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动开发/">移动开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tip/">tip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 18px;">CSS</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/HTML/" style="font-size: 16px;">HTML</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/mobile/" style="font-size: 14px;">mobile</a> <a href="/tags/responsive/" style="font-size: 14px;">responsive</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/简历/" style="font-size: 10px;">简历</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/20/我的简历/">我的简历</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/jQuery 插件封装的方法/">jQuery 插件封装的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/原生js获取鼠标坐标方法/">原生js获取鼠标坐标方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/02/TypeScript入门/">TypeScript入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/Git基础/">Git基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Brandon<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

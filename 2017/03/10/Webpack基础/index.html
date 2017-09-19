@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Webpack基础 | Brandon&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。">
+<meta name="keywords" content="Webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Webpack基础">
+<meta property="og:url" content="http://brandon.vc/2017/03/10/Webpack基础/index.html">
+<meta property="og:site_name" content="Brandon&#39;s blog">
+<meta property="og:description" content="Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://brandon.vc/images/article/webpack.png">
+<meta property="og:updated_time" content="2017-07-18T02:07:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Webpack基础">
+<meta name="twitter:description" content="Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。">
+<meta name="twitter:image" content="http://brandon.vc/images/article/webpack.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Brandon&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Brandon&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://brandon.vc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Webpack基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/10/Webpack基础/" class="article-date">
+  <time datetime="2017-03-10T12:46:59.000Z" itemprop="datePublished">2017-03-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tools/">tools</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Webpack基础
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。<br><a id="more"></a></p>
+<p><img src="/images/article/webpack.png" alt="Webpack"></p>
+<h2 id="安装-Webpack"><a href="#安装-Webpack" class="headerlink" title="安装 Webpack"></a>安装 Webpack</h2><p>在安装 <code>Webpack</code> 前，本地环境需要支持 <code>node.js</code>。<br>由于 <code>npm</code> 安装速度慢，本教程使用了淘宝的镜像及其命令 <code>cnpm</code>，安装使用介绍参照：使用淘宝 NPM 镜像。<br>使用 <code>cnpm</code> 安装 <code>webpack</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cnpm install webpack -g</div></pre></td></tr></table></figure>
+<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><p>1, 创建一个目录 <code>app</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ mkdir app</div></pre></td></tr></table></figure>
+<p>2,在 app 目录下添加 <code>runoob1.js</code> 文件，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.write(<span class="string">"It works."</span>);</div><div class="line"><span class="string">``</span><span class="string">` </span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">3,在 app 目录下添加 `</span>index.html<span class="string">` 文件，代码如下：</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">`</span><span class="string">``</span> html</div><div class="line">&lt;html&gt;</div><div class="line">    &lt;head&gt;</div><div class="line">        &lt;meta charset=<span class="string">"utf-8"</span>&gt;</div><div class="line">    &lt;<span class="regexp">/head&gt;</span></div><div class="line"><span class="regexp">    &lt;body&gt;</span></div><div class="line"><span class="regexp">        &lt;script type="text/</span>javascript<span class="string">" src="</span>bundle.js<span class="string">" charset="</span>utf<span class="number">-8</span><span class="string">"&gt;&lt;/script&gt;</span></div><div class="line"><span class="string">    &lt;/body&gt;</span></div><div class="line"><span class="string">&lt;/html&gt;</span></div></pre></td></tr></table></figure>
+<p>4,使用 <code>webpack</code> 命令来打包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">webpack runoob1.js bundle.js</div><div class="line">Hash: a41c6217554e666594cb</div><div class="line">Version: webpack 1.12.13</div><div class="line">Time: 50ms</div><div class="line">    Asset     Size  Chunks             Chunk Names</div><div class="line">bundle.js  1.42 kB       0  [emitted]  main</div><div class="line">   [0] ./runoob1.js 29 bytes &#123;0&#125; [built]</div></pre></td></tr></table></figure>
+<h3 id="模块依赖"><a href="#模块依赖" class="headerlink" title="模块依赖"></a>模块依赖</h3><p>5，创建第二个 JS 文件 <code>runoob2.js</code>，代码如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="string">"It works from runoob2.js."</span>;</div></pre></td></tr></table></figure>
+<p>6, 更新 <code>runoob1.js</code> 文件，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.write(<span class="built_in">require</span>(<span class="string">"./runoob2.js"</span>));</div></pre></td></tr></table></figure>
+<p>7,接下来我们使用 <code>webpack</code> 命令来打包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">webpack runoob1.js bundle.js</div><div class="line"> </div><div class="line">Hash: dcf55acff639ebfe1677</div><div class="line">Version: webpack 1.12.13</div><div class="line">Time: 52ms</div><div class="line">    Asset     Size  Chunks             Chunk Names</div><div class="line">bundle.js  1.55 kB       0  [emitted]  main</div><div class="line">   [0] ./runoob1.js 41 bytes &#123;0&#125; [built]</div><div class="line">   [1] ./runoob2.js 46 bytes &#123;0&#125; [built]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>webpack 根据模块的依赖关系进行静态分析，这些文件(模块)会被包含到 bundle.js 文件中。Webpack 会给每个模块分配一个唯一的 id 并通过这个 id 索引和访问模块。 在页面启动时，会先执行 runoob1.js 中的代码，其它模块会在运行 require 的时候再执行。</p>
+</blockquote>
+<h2 id="LOADER"><a href="#LOADER" class="headerlink" title="LOADER"></a>LOADER</h2><p>Webpack 本身只能处理 JavaScript 模块，如果要处理其他类型的文件，就需要使用 loader 进行转换。</p>
+<h3 id="css-文件"><a href="#css-文件" class="headerlink" title="css 文件"></a>css 文件</h3><p>安装 <code>css-loader</code> 和 <code>style-loader</code>(全局安装需要参数 <code>-g</code>)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cnpm install css-loader style-loader</div></pre></td></tr></table></figure>
+<blockquote>
+<p>执行以上命令后，会再当前目录生成 node_modules 目录，它就是 css-loader 和 style-loader 的安装目录。</p>
+</blockquote>
+<h3 id="基础-1"><a href="#基础-1" class="headerlink" title="基础"></a>基础</h3><p>1，创建一个 <code>style.css</code> 文件，代码如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">background</span>: yellow;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2,修改 <code>runoob1.js</code> 文件，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">"!style-loader!css-loader!./style.css"</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">require</span>(<span class="string">"./runoob2.js"</span>));</div></pre></td></tr></table></figure>
+<p>3,用 <code>webpack</code> 命令来打包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">webpack runoob1.js bundle.js</div><div class="line"> </div><div class="line">Hash: a9ef45165f81c89a4363</div><div class="line">Version: webpack 1.12.13</div><div class="line">Time: 619ms</div><div class="line">    Asset     Size  Chunks             Chunk Names</div><div class="line">bundle.js  11.8 kB       0  [emitted]  main</div><div class="line">   [0] ./runoob1.js 76 bytes &#123;0&#125; [built]</div><div class="line">   [5] ./runoob2.js 46 bytes &#123;0&#125; [built]</div><div class="line">    + 4 hidden modules</div></pre></td></tr></table></figure>
+<blockquote>
+<p>require CSS 文件的时候都要写 loader 前缀 <code>!style-loader!css-loader!</code>，当然我们可以根据模块类型（扩展名）来自动绑定需要的 loader。 </p>
+</blockquote>
+<h3 id="自动绑定loader"><a href="#自动绑定loader" class="headerlink" title="自动绑定loader"></a>自动绑定loader</h3><p>1,将 runoob1.js 中的 require(“!style-loader!css-loader!./style.css”) 修改为 require(“./style.css”) ：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">require</span>(<span class="string">"./style.css"</span>);</div><div class="line"><span class="built_in">document</span>.write(<span class="built_in">require</span>(<span class="string">"./runoob2.js"</span>));</div></pre></td></tr></table></figure>
+<p>2,webpack</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack runoob1.js bundle.js --module-bind <span class="string">'css=style-loader!css-loader'</span></div></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>我们可以将一些编译选项放在配置文件中，以便于统一管理：<br>创建 <code>webpack.config.js</code> 文件，代码如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    entry: <span class="string">"./runoob1.js"</span>,</div><div class="line">    output: &#123;</div><div class="line">        path: __dirname,</div><div class="line">        filename: <span class="string">"bundle.js"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        loaders: [</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">loader</span>: <span class="string">"style-loader!css-loader"</span> &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>接下来我们只需要执行 <code>webpack</code> 命令即可生成 <code>bundle.js</code> 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">webpack</div><div class="line"> </div><div class="line">Hash: 4fdefac099a5f36ff74b</div><div class="line">Version: webpack 1.12.13</div><div class="line">Time: 576ms</div><div class="line">    Asset     Size  Chunks             Chunk Names</div><div class="line">bundle.js  11.8 kB       0  [emitted]  main</div><div class="line">   [0] ./runoob1.js 65 bytes &#123;0&#125; [built]</div><div class="line">   [5] ./runoob2.js 46 bytes &#123;0&#125; [built]</div><div class="line">    + 4 hidden modules</div></pre></td></tr></table></figure>
+<blockquote>
+<p>webpack 命令执行后，会默认载入当前目录的 <code>webpack.config.js</code>文件。</p>
+</blockquote>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p>安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cnpm install webpack --save-dev</div></pre></td></tr></table></figure></p>
+<p>比如我们可以安装内置的 <code>BannerPlugin</code> 插件，用于在文件头部输出一些注释信息。<br>修改 <code>webpack.config.js</code>，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack=<span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"> </div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    entry: <span class="string">"./runoob1.js"</span>,</div><div class="line">    output: &#123;</div><div class="line">        path: __dirname,</div><div class="line">        filename: <span class="string">"bundle.js"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="built_in">module</span>: &#123;</div><div class="line">        loaders: [</div><div class="line">            &#123; <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, <span class="attr">loader</span>: <span class="string">"style-loader!css-loader"</span> &#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    plugins:[</div><div class="line">    <span class="keyword">new</span> webpack.BannerPlugin(<span class="string">'webpack 实例'</span>)</div><div class="line">    ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>然后运行:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack</div></pre></td></tr></table></figure>
+<blockquote>
+<p>打开 <code>bundle.js</code>，可以看到文件头部出现了我们指定的注释信息。</p>
+</blockquote>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>当项目逐渐变大，webpack 的编译时间会变长，可以通过参数让编译的输出内容带有进度和颜色。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack --progress --colors</div></pre></td></tr></table></figure>
+<p>如果不想每次修改模块后都重新编译，那么可以启动监听模式。开启监听模式后，没有变化的模块会在编译后缓存到内存中，而不会每次都被重新编译，所以监听模式的整体速度是很快的。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">webpack --progress --colors --watch</div></pre></td></tr></table></figure>
+<p>当然，我们可以使用 <code>webpack-dev-server</code> 开发服务，这样我们就能通过 <code>localhost:8080</code> 启动一个 express 静态资源 web 服务器，并且会以监听模式自动运行 <code>webpack</code>，在浏览器打开 <code>http://localhost:8080/</code> 或 <code>http://localhost:8080/webpack-dev-server/</code> 可以浏览项目中的页面和编译后的资源输出，并且通过一个 <code>socket.io</code> 服务实时监听它们的变化并自动刷新页面。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 安装</span></div><div class="line">cnpm install webpack-dev-server -g</div><div class="line"> </div><div class="line"><span class="comment"># 运行</span></div><div class="line">webpack-dev-server --progress --colors</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://brandon.vc/2017/03/10/Webpack基础/" data-id="cj7rpo3kt000y9uu2c87jyx01" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Webpack/">Webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/14/Git基础/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Git基础
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/05/添加移除事件、阻止冒泡浏览器默认行为的兼容写法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">添加移除事件、阻止冒泡浏览器默认行为的兼容写法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript扩展/">JavaScript扩展</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript框架/">JavaScript框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动开发/">移动开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tip/">tip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/简历/">简历</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 18px;">CSS</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/HTML/" style="font-size: 16px;">HTML</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/mobile/" style="font-size: 14px;">mobile</a> <a href="/tags/responsive/" style="font-size: 14px;">responsive</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/简历/" style="font-size: 10px;">简历</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/20/我的简历/">我的简历</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/15/jQuery 插件封装的方法/">jQuery 插件封装的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/原生js获取鼠标坐标方法/">原生js获取鼠标坐标方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/02/TypeScript入门/">TypeScript入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/Git基础/">Git基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Brandon<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
