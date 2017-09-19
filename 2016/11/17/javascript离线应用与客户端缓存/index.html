@@ -1,21 +1,333 @@
-extends partial/layout
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>JavaScript离线应用与客户端缓存 | Brandon&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTML5添加了对离线应用的支持。开发离线Web应用有几个关键点。确保应用知道设备是否能上网以便下一步执行正确的操作，然后应用还必须能访问一定的资源。最后必须有一块本地空间用于保存数据，无论是否能上网都能读写数据。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript离线应用与客户端缓存">
+<meta property="og:url" content="http://brandon.vc/2016/11/17/javascript离线应用与客户端缓存/index.html">
+<meta property="og:site_name" content="Brandon&#39;s blog">
+<meta property="og:description" content="HTML5添加了对离线应用的支持。开发离线Web应用有几个关键点。确保应用知道设备是否能上网以便下一步执行正确的操作，然后应用还必须能访问一定的资源。最后必须有一块本地空间用于保存数据，无论是否能上网都能读写数据。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-14T09:57:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript离线应用与客户端缓存">
+<meta name="twitter:description" content="HTML5添加了对离线应用的支持。开发离线Web应用有几个关键点。确保应用知道设备是否能上网以便下一步执行正确的操作，然后应用还必须能访问一定的资源。最后必须有一块本地空间用于保存数据，无论是否能上网都能读写数据。">
+  
+    <link rel="alternate" href="/atom.xml" title="Brandon&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-block site_title
-    != page.title + " · " + config.title
+</head>
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Brandon&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://brandon.vc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-javascript离线应用与客户端缓存" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/17/javascript离线应用与客户端缓存/" class="article-date">
+  <time datetime="2016-11-17T04:32:56.000Z" itemprop="datePublished">2016-11-17</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
+  </div>
 
-block container
-    include mixins/post
-    +post(page)
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript离线应用与客户端缓存
+    </h1>
+  
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HTML5添加了对离线应用的支持。开发离线Web应用有几个关键点。确保应用知道设备是否能上网以便下一步执行正确的操作，然后应用还必须能访问一定的资源。最后必须有一块本地空间用于保存数据，无论是否能上网都能读写数据。<br><a id="more"></a></p>
+<h2 id="离线检测"><a href="#离线检测" class="headerlink" title="离线检测"></a>离线检测</h2><p><code>navigator.onLine</code> 属性可以检测设备是否能够上网</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (navigator.onLine) &#123;</div><div class="line">	<span class="comment">//正常工作</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	<span class="comment">//执行离线状态的任务</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>HTML5的两个事件<code>online</code>和<code>offline</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"online"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	alert(<span class="string">"Online"</span>);</div><div class="line">&#125;)</div><div class="line">EventUtil.addHandler(<span class="built_in">window</span>, <span class="string">"offline"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	alert(<span class="string">"Offline"</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="应用缓存"><a href="#应用缓存" class="headerlink" title="应用缓存"></a>应用缓存</h2><p>使用描述文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">CACHE MANIFEST</div><div class="line"><span class="comment">#Comment</span></div><div class="line"></div><div class="line">file.js</div><div class="line">file.css</div></pre></td></tr></table></figure>
+<p>要将描述文件与页面联系起来，需要在html元素的manifest属性中指定这个文件的路径，推荐扩展名用appcache</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">manifest</span>=<span class="string">"/offline.appcache"</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="Javascript的API"><a href="#Javascript的API" class="headerlink" title="Javascript的API"></a>Javascript的API</h3><p><code>applicationCache</code> 对象，该对象有一个<code>status</code>属性</p>
+<ul>
+<li>0 | 无缓冲</li>
+<li>1 | 闲置，应用缓存未得到更新</li>
+<li>2 | 检查中，正在下载描述文件并检查更新</li>
+<li>3 | 下载中，正在下载缓存资源</li>
+<li>4 | 更新完成，所有资源下载完毕，可以通过<code>swapCache()</code>来使用了</li>
+<li>5 | 废弃，描述文件已经不存在</li>
+</ul>
+<p>相关事件</p>
+<ul>
+<li>checking | 为应用缓存查找更新时触发</li>
+<li>error | 检查更新或下载资源期间发生错误时触发</li>
+<li>noupdate | 检查描述文件发现文件无变化时触发</li>
+<li>downloading | 开始下载应用缓存时触发</li>
+<li>progress | 下载应用缓存期间持续触发</li>
+<li>updateready | 页面新的应用缓存下载完毕且可以使用过<code>swapCache()</code>时触发</li>
+<li>cached | 应用缓存完整可用时触发</li>
+</ul>
+<p><code>update()</code> 检查更新<br><code>applicationCache.update();</code><br><code>swapCache()</code> 启用新应用缓存</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">EventUtil.addHandler(applicationCache, <span class="string">"updateready"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	applicationCache.swapCache();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="数据存储"><a href="#数据存储" class="headerlink" title="数据存储"></a>数据存储</h2><h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> CookieUtil = &#123;</div><div class="line">	get: <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> cookieName = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">"="</span>,</div><div class="line">			cookieStart = <span class="built_in">document</span>.cookie.indexOf(cookieName),</div><div class="line">			cookieValue = <span class="literal">null</span>;</div><div class="line">		<span class="keyword">if</span> (cookieStart &gt; <span class="number">-1</span>) &#123;</div><div class="line">			<span class="keyword">var</span> cookieEnd = <span class="built_in">document</span>.cookie.indexOf(<span class="string">";"</span>, cookieStart);</div><div class="line">			<span class="keyword">if</span> (cookieEnd == <span class="number">-1</span>) &#123;</div><div class="line">				cookieEnd = <span class="built_in">document</span>.cookie.length;</div><div class="line">			&#125;</div><div class="line">			cookieValue = <span class="built_in">decodeURIComponent</span>(<span class="built_in">document</span>.cookie.substring(cookieStart + cookieName.length, cookieEnd));</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> cookieValue;</div><div class="line">	&#125;,</div><div class="line">	set: <span class="function"><span class="keyword">function</span>(<span class="params">name, value, expires, path, domian, secure</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> cookieText = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">"="</span> + <span class="built_in">encodeURIComponent</span>(value);</div><div class="line">		<span class="keyword">if</span> (expires <span class="keyword">instanceof</span> <span class="built_in">Date</span>) &#123;</div><div class="line">			cookieText += <span class="string">"; expires="</span> + expires.toGMTString();</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (path) &#123;</div><div class="line">			cookieText += <span class="string">"; path="</span> + path;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (domian) &#123;</div><div class="line">			cookieText += <span class="string">"; domian="</span> + path;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (secure) &#123;</div><div class="line">			cookieText += <span class="string">"; secure"</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">document</span>.cookie = cookieText;</div><div class="line">	&#125;,</div><div class="line">	unset: <span class="function"><span class="keyword">function</span>(<span class="params">name, path, domian, secure</span>)</span>&#123;</div><div class="line">		<span class="keyword">this</span>.set(name, <span class="string">""</span>, <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>), path, domian, secure);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="子cookie"><a href="#子cookie" class="headerlink" title="子cookie"></a>子cookie</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> SubCookieUtil = &#123;</div><div class="line">	get: <span class="function"><span class="keyword">function</span>(<span class="params">name, subName</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> subCookies = <span class="keyword">this</span>.getAll(name);</div><div class="line">		<span class="keyword">if</span> (subCookies) &#123;</div><div class="line">			<span class="keyword">return</span> subCookies[subName]</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	getAll: <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> cookieName = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">"="</span>,</div><div class="line">			cookieStart = <span class="built_in">document</span>.cookie.indexOf(cookieName),</div><div class="line">			cookieValue = <span class="literal">null</span>,</div><div class="line">			subCookies,</div><div class="line">			i,</div><div class="line">			parts,</div><div class="line">			result = &#123;&#125;;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (cookieStart &gt; <span class="number">-1</span>) &#123;</div><div class="line">			cookieEnd = <span class="built_in">document</span>.cookie.indexOf(<span class="string">";"</span>, cookieStart);</div><div class="line">			<span class="keyword">if</span> (cookieEnd == <span class="number">-1</span>) &#123;</div><div class="line">				cookieEnd = <span class="built_in">document</span>.cookie.length;</div><div class="line">			&#125;</div><div class="line">			cookieValue = <span class="built_in">document</span>.cookie.substring(cookieStart + cookieName.length, cookieEnd);</div><div class="line">			<span class="keyword">if</span> (cookieValue.length &gt; <span class="number">0</span>) &#123;</div><div class="line">				subCookies = cookieValue.split(<span class="string">"&amp;"</span>);</div><div class="line">				<span class="keyword">for</span>(i=<span class="number">0</span>,len=subCookies.length; i &lt; len; i++)&#123;</div><div class="line">					parts = subCookies[i].split(<span class="string">"="</span>);</div><div class="line">					result[<span class="built_in">decodeURIComponent</span>(parts[<span class="number">0</span>])] = <span class="built_in">decodeURIComponent</span>(parts[<span class="number">1</span>]);</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">return</span> result;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">	&#125;,</div><div class="line">	set: <span class="function"><span class="keyword">function</span>(<span class="params">name, subName, value, expires, path, domian, secure</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> subCookies = <span class="keyword">this</span>.getAll(name) || &#123;&#125;;</div><div class="line">		subCookies[subName] = value;</div><div class="line">		<span class="keyword">this</span>.setAll(name, subCookies, expires, path, domian, secure);</div><div class="line">	&#125;,</div><div class="line">	setAll: <span class="function"><span class="keyword">function</span>(<span class="params">name, subCookies, expires, path, domian, secure</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> cookieText = <span class="built_in">encodeURIComponent</span>(name) + <span class="string">"="</span>,</div><div class="line">			subCookiesParts = <span class="keyword">new</span> <span class="built_in">Array</span>(),</div><div class="line">			subName;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (subName <span class="keyword">in</span> subCookies) &#123;</div><div class="line">			<span class="keyword">if</span>(subName.length &gt; <span class="number">0</span> &amp;&amp; subCookies.hasOwnProperty(subName))&#123;</div><div class="line">				subCookiesParts.push(<span class="built_in">encodeURIComponent</span>(subName) + <span class="string">"="</span> + <span class="built_in">encodeURIComponent</span>(subCookies[subName]));</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (cookieParts.length &gt; <span class="number">0</span>) &#123;</div><div class="line">			cookieText += subCookiesParts.join(<span class="string">"&amp;"</span>);</div><div class="line">			<span class="keyword">if</span> (expires <span class="keyword">instanceof</span> <span class="built_in">Date</span>) &#123;</div><div class="line">				cookieText += <span class="string">"; expires="</span> + expires.toGMTString();</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (path) &#123;</div><div class="line">				cookieText += <span class="string">"; path="</span> + path;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (domian) &#123;</div><div class="line">				cookieText += <span class="string">"; domian="</span> + path;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">if</span> (secure) &#123;</div><div class="line">				cookieText += <span class="string">"; secure"</span>;</div><div class="line">			&#125;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			cookieText += <span class="string">"; expires="</span> + (<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>)).toGMTString();</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">document</span>.cookie = cookieText;</div><div class="line">	&#125;,</div><div class="line">	unset: <span class="function"><span class="keyword">function</span>(<span class="params">name, subName, path, domian, secure</span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> subCookies = <span class="keyword">this</span>,getAll(name);</div><div class="line">		<span class="keyword">if</span> (subCookies)&#123;</div><div class="line">			<span class="keyword">delete</span> subCookies[subName];</div><div class="line">			<span class="keyword">this</span>.setAll(name, subCookies, <span class="literal">null</span>, path, domian, secure);</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	unsetAll: <span class="function"><span class="keyword">function</span>(<span class="params">name, path, domian, secure</span>)</span>&#123;</div><div class="line">		<span class="keyword">this</span>.setAll(name, <span class="literal">null</span>, <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="number">0</span>), path, domian, secure);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="IE用户数据"><a href="#IE用户数据" class="headerlink" title="IE用户数据"></a>IE用户数据</h3><p>使用css在某元素上指定userData行为</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"behavior:url(#default#userData)"</span> <span class="attr">id</span>=<span class="string">"dataStore"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>setAttribute()</code> 保存数据<br><code>save()</code> 保存到数据空间<br><code>load()</code> 获取数据<br><code>removeAttribute()</code> 移除数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dataStore = <span class="built_in">document</span>.getElementById(<span class="string">"dataStore"</span>);</div><div class="line">dataStore.setAttribute(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line">dataStore.save(<span class="string">"BookInfo"</span>);</div><div class="line">dataStore.load(<span class="string">"BookInfo"</span>);</div><div class="line">dataStore.removeAttribute(<span class="string">"name"</span>);</div><div class="line">dataStore.save(<span class="string">"BookInfo"</span>);</div></pre></td></tr></table></figure>
+<h2 id="Web存储机制"><a href="#Web存储机制" class="headerlink" title="Web存储机制"></a>Web存储机制</h2><h3 id="Storage类型"><a href="#Storage类型" class="headerlink" title="Storage类型"></a>Storage类型</h3><p>实例的方法：</p>
+<ul>
+<li><code>clear()</code> | 删除所有值（Firefox没有实现）</li>
+<li><code>getItem(name)</code> | 根据指定的名字name获取对应的值</li>
+<li><code>key(index)</code> | 获取index位置处的值得名字</li>
+<li><code>removeItem(name)</code> | 删除name的键值对</li>
+<li><code>setItem(name, value)</code> | 为指定的name设置一个对应的值</li>
+</ul>
+<h3 id="sessionStorage对象"><a href="#sessionStorage对象" class="headerlink" title="sessionStorage对象"></a>sessionStorage对象</h3><p>属于Storage的一个实例<br>特定于某个会话的数据，只能保持到浏览器关闭</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用方法存储</span></div><div class="line">sessionStorage.setItem(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line"><span class="comment">//使用属性存储</span></div><div class="line">sessionStorage.book = <span class="string">"Professional JavaScript"</span>;</div><div class="line"><span class="comment">//使用方法读取</span></div><div class="line"><span class="keyword">var</span> name = sessionStorage.getItem(<span class="string">"name"</span>);</div><div class="line"><span class="comment">//使用属性读取</span></div><div class="line"><span class="keyword">var</span> book = sessionStorage.book;</div></pre></td></tr></table></figure>
+<h3 id="globalStorage对象"><a href="#globalStorage对象" class="headerlink" title="globalStorage对象"></a>globalStorage对象</h3><p>跨会话存储数据，但对域名有限制</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">globalStorage[<span class="string">"wrox.com"</span>].name = <span class="string">"Nicholas"</span>;</div><div class="line"><span class="keyword">var</span> name = globalStorage[location.host].getItem(<span class="string">"name"</span>);</div></pre></td></tr></table></figure>
+<h3 id="localStorage对象"><a href="#localStorage对象" class="headerlink" title="localStorage对象"></a>localStorage对象</h3><p>同一个域名下有效，相当于<code>globalStorage[location.host]</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">localStorage.setItem(<span class="string">"name"</span>, <span class="string">"Nicholas"</span>);</div><div class="line"><span class="keyword">var</span> name = localStorage.name;</div></pre></td></tr></table></figure>
+<h2 id="IndexedDB"><a href="#IndexedDB" class="headerlink" title="IndexedDB"></a>IndexedDB</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> indexedDB = <span class="built_in">window</span>.indexedDB || <span class="built_in">window</span>.msIndexedDB || <span class="built_in">window</span>.mozIndexedDB || <span class="built_in">window</span>.webkitIndexedDB;</div></pre></td></tr></table></figure>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>使用对象保存数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> request, database;</div><div class="line">request = indexedDB.open(<span class="string">"admin"</span>);</div><div class="line">request.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	alert(<span class="string">"Something bad happened while try to open: "</span> + event.target.errorCode);</div><div class="line">&#125;</div><div class="line">request.onsuccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	database = event.target.result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>默认情况下IndexedDB数据库是没有版本号的，可以使用<code>setVersion()</code>方法设置版本号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (database.version != <span class="string">"1.0"</span>) &#123;</div><div class="line">	request = database.setVersion(<span class="string">"1.0"</span>);</div><div class="line">	request.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">		alert(<span class="string">"Something bad happened while try to open: "</span> + event.target.errorCode);</div><div class="line">	&#125;</div><div class="line">	request.onsuccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">		alert(<span class="string">"Database initialization complete. Database name: "</span> + database.name + <span class="string">", Version: "</span> + database.version);</div><div class="line">	&#125;;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">	alert(<span class="string">"Database initialization complete. Database name: "</span> + database.name + <span class="string">", Version: "</span> + database.version);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="对象存储空间"><a href="#对象存储空间" class="headerlink" title="对象存储空间"></a>对象存储空间</h3><p>使用<code>createObjectStore()</code> 方法创建一个存储空间<br>使用<code>add()</code>方法插入新值<br>使用<code>put()</code>方法更新原有的值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> users = [&#123;</div><div class="line">	username: <span class="string">"007"</span>,</div><div class="line">	firstName: <span class="string">"James"</span>,</div><div class="line">	lastName: <span class="string">"Bond"</span>,</div><div class="line">	password: <span class="string">"foo"</span></div><div class="line">&#125;, &#123;</div><div class="line">	username: <span class="string">"ace"</span>,</div><div class="line">	firstName: <span class="string">"John"</span>,</div><div class="line">	lastName: <span class="string">"Smith"</span>,</div><div class="line">	password: <span class="string">"bar"</span></div><div class="line">&#125;];</div><div class="line"><span class="comment">//store是存储空间的引用</span></div><div class="line"><span class="comment">//第一个参数是store的name</span></div><div class="line"><span class="comment">//keyPath指定的是存储空间的键</span></div><div class="line"><span class="comment">//createObjectStore()在database中创建一个存储空间，指定键为“username”</span></div><div class="line"><span class="keyword">var</span> store = database.createObjectStore(<span class="string">"users"</span>, &#123; <span class="attr">keyPath</span>: <span class="string">"username"</span>&#125;);</div><div class="line"></div><div class="line"><span class="comment">//users中保存着一批用户对象</span></div><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>,</div><div class="line">	request,</div><div class="line">	requests = [],</div><div class="line">	len = users.length;</div><div class="line"><span class="keyword">while</span>(i &lt; len)&#123;</div><div class="line">	request = store.add(users[i++]);</div><div class="line">	request.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">//处理错误</span></div><div class="line">	&#125;;</div><div class="line">	request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">//处理成功</span></div><div class="line">	&#125;;</div><div class="line">	requests.push(request);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><p>使用<code>transaction()</code>方法创建事务<br>第一个参数：可以传入一个或多个存储空间<br>第二个参数：修改访问方式，IDBTransaction接口（Chrome中叫webkitIDBTransaction）的常量：<br>READ_ONLY | 只读<br>READ_WRITE | 读写<br>VERSION_CHANGE | 改变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> IDBTransaction = <span class="built_in">window</span>.IDBTransaction || <span class="built_in">window</span>.webkitIDBTransaction;</div><div class="line"><span class="keyword">var</span> transaction = database.transaction();</div><div class="line"><span class="keyword">var</span> transaction = database.transaction(<span class="string">"users"</span>);</div><div class="line"><span class="keyword">var</span> transaction = database.transaction([<span class="string">"users"</span>, <span class="string">"anotherStore"</span>]);</div><div class="line"><span class="keyword">var</span> transaction = database.transaction(<span class="string">"users"</span>, IDBTransaction.READ_WRITE);</div></pre></td></tr></table></figure>
+<p>取得事务索引后，使用<code>objectStore()</code>方法并传入存储空间的名称，就可以访问特定的存储空间<br>使用<code>add()</code>方法和<code>put()</code>方法<br>使用<code>get()</code>方法可以取得值<br>使用<code>delete()</code>方法可以删除对象<br>使用<code>clear()</code>方法可以删除所有对象<br>所有5个方法都会返回新的请求对象，用于绑定修改是否成功事件</p>
+<p>事务本身也有事件处理程序：<code>onerror</code>和<code>oncomplete</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> request = database.transaction(<span class="string">"users"</span>).objectStore(<span class="string">"users"</span>).get(<span class="string">"007"</span>);</div><div class="line">request.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//处理错误</span></div><div class="line">&#125;;</div><div class="line">request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="comment">//处理成功</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="使用游标查询"><a href="#使用游标查询" class="headerlink" title="使用游标查询"></a>使用游标查询</h3><p>在对象存储空间上调用<code>openCursor()</code>方法可以创建游标，返回一个请求对象，必须为该对象指定<code>onsuccess</code>事件和<code>onerror</code>事件<br>可以在<code>onsuccess</code>事件中通过<code>event.target.result</code>取得存储空间中的下一个对象<br>没有下一项时，这个属性为null<br>有下一项时，这个属性中保存一个<code>IDBCursor</code>的实例，该实例有以下几个属性：<br>direction | 数值，表示游标方向。<br>        IDBCursor.NEXT，表示下一项<br>        IDBCursor.NEXT_NO_DUPLICATE，表示下一个不重复的项<br>        IDBCursor.PREV，表示前一项<br>        IDBCursor.PREV_NO_DUPLICATE，表示前一个不重复的项<br>key | 对象的键<br>value | 实际的对象<br>primaryKey | 游标使用的键（对象键，索引键）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = database.transaction(<span class="string">"users"</span>).objectStore(<span class="string">"users"</span>),</div><div class="line">	request = store.openCursor();</div><div class="line">request.onerror = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	<span class="comment">//处理错误</span></div><div class="line">&#125;;</div><div class="line">request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> cursor = event.target.result;</div><div class="line">	<span class="keyword">if</span>(cursor)&#123;  <span class="comment">//必须检查是否存在</span></div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Key: "</span> + cursor.key + <span class="string">", Value: "</span> + <span class="built_in">JSON</span>.stringify(cursor.value));</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>使用游标可以更新个别的记录。<br>调用<code>update()</code>方法可以用指定的对象更新当前游标的value。返回新请求<br>调用<code>delete()</code>方法可以删除相应的记录。返回新请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> cursor = event.target.result,</div><div class="line">		value,</div><div class="line">		updateRequest;</div><div class="line">	<span class="keyword">if</span>(cursor)&#123;  <span class="comment">//必须检查是否存在</span></div><div class="line">		<span class="keyword">if</span> (cursor.key == <span class="string">"foo"</span>) &#123;</div><div class="line">			value = cursor.value;		<span class="comment">//取得当前的值</span></div><div class="line">			value.password = <span class="string">"magic!"</span>	<span class="comment">//更新密码</span></div><div class="line">			updateRequest = cursor.update(value);	<span class="comment">//请求保存更新</span></div><div class="line">			updateRequest.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="comment">//处理错误</span></div><div class="line">			&#125;;</div><div class="line">			updateRequest.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="comment">//处理成功</span></div><div class="line">			&#125;;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;	</div><div class="line">request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> cursor = event.target.result,</div><div class="line">		value,</div><div class="line">		deleteRequest;</div><div class="line">	<span class="keyword">if</span>(cursor)&#123;  <span class="comment">//必须检查是否存在</span></div><div class="line">		<span class="keyword">if</span> (cursor.key == <span class="string">"foo"</span>) &#123;</div><div class="line">			deleteRequest = cursor.delete();	<span class="comment">//删除当前项</span></div><div class="line">			deleteRequest.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="comment">//处理错误</span></div><div class="line">			&#125;;</div><div class="line">			deleteRequest.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">				<span class="comment">//处理成功</span></div><div class="line">			&#125;;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>默认情况下，每个游标只会发送一次请求<br>调用<code>continue(key)</code>可以移动到指定建的位置，不指定key则移动到下一项<br>调用<code>advance(count)</code>可以向前移动count项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> cursor = event.target.result;</div><div class="line">	<span class="keyword">if</span>(cursor)&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Key: "</span> + cursor.key + <span class="string">", Value: "</span> + <span class="built_in">JSON</span>.stringify(cursor.value));</div><div class="line">		cursor.continue()；</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Done!"</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="键范围"><a href="#键范围" class="headerlink" title="键范围"></a>键范围</h3><p>键范围由IDBKeyRange（Chrome中叫webkitIDBKeyRange）的实例表示</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> IDBKeyRange = <span class="built_in">window</span>.IDBKeyRange || <span class="built_in">window</span>.webkitIDBKeyRange;</div></pre></td></tr></table></figure>
+<p><code>only()</code>，传入要取得的对象的键，与get(“007”)一致</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> onlyRange = IDBKeyRange.only(<span class="string">"007"</span>);</div></pre></td></tr></table></figure>
+<p><code>lowerBound()</code>，取得指定结果集的下界，参数为游标开始位置，第二个参数true为游标下一个对象开始的范围</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从键"007"开始，移动到最后</span></div><div class="line"><span class="keyword">var</span> lowerRange = IDBKeyRange.lowerBound(<span class="string">"007"</span>);</div><div class="line"><span class="comment">//从键"007"的下一个对象开始，移动到最后</span></div><div class="line"><span class="keyword">var</span> lowerRange = IDBKeyRange.lowerBound(<span class="string">"007"</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p><code>upperRange()</code>，取得指定结果集的上界，参数为游标结束位置，第二个参数true为游标上一个对象结束的范围</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从头开始，到键"007"为止</span></div><div class="line"><span class="keyword">var</span> upperRange = IDBKeyRange.upperRange(<span class="string">"007"</span>);</div><div class="line"><span class="comment">//从头开始，到键"007"的上一个对象为止</span></div><div class="line"><span class="keyword">var</span> upperRange = IDBKeyRange.upperRange(<span class="string">"007"</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p><code>bound()</code>，取得指定结果集的上下界，参数为游标开始和结束位置，第二三个参数true表示不包含上届和下界</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//从"007"开始，到键"ace"为止</span></div><div class="line"><span class="keyword">var</span> boundRange = IDBKeyRange.bound(<span class="string">"007"</span>, <span class="string">"ace"</span>);</div><div class="line"><span class="comment">//从"007"下一个对象开始，到键"ace"为止</span></div><div class="line"><span class="keyword">var</span> boundRange = IDBKeyRange.bound(<span class="string">"007"</span>, <span class="string">"ace"</span>, <span class="literal">true</span>);</div><div class="line"><span class="comment">//从"007"下一个对象开始，到键"ace"的上一个对象为止</span></div><div class="line"><span class="keyword">var</span> boundRange = IDBKeyRange.bound(<span class="string">"007"</span>, <span class="string">"ace"</span>, <span class="literal">true</span>, <span class="literal">true</span>);</div><div class="line"><span class="comment">//从"007"开始，到键"ace"的上一个对象为止</span></div><div class="line"><span class="keyword">var</span> boundRange = IDBKeyRange.bound(<span class="string">"007"</span>, <span class="string">"ace"</span>, <span class="literal">false</span>, <span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p>把定义键范围传给<code>openCursor()</code>方法，可以得到一个符合相应约束条件的游标</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = database.transaction(<span class="string">"users"</span>).objectStore(<span class="string">"users"</span>),</div><div class="line">	range = IDBKeyRange.bound(<span class="string">"007"</span>, <span class="string">"ace"</span>),</div><div class="line">	request = store.openCursor(range);</div><div class="line">request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> cursor = event.target.result;</div><div class="line">	<span class="keyword">if</span>(cursor)&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Key: "</span> + cursor.key + <span class="string">", Value: "</span> + <span class="built_in">JSON</span>.stringify(cursor.value));</div><div class="line">		cursor.continue();</div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"Done!"</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="设定游标方向"><a href="#设定游标方向" class="headerlink" title="设定游标方向"></a>设定游标方向</h3><p><code>openCursor()</code> 方法接收两个参数，一个是范围实例，另一个是IDBCursor中的常量</p>
+<blockquote>
+<p>IDBCursor.NEXT，表示下一项<br>  IDBCursor.NEXT_NO_DUPLICATE，表示下一个不重复的项<br>  IDBCursor.PREV，表示前一项<br>  IDBCursor.PREV_NO_DUPLICATE，表示前一个不重复的项</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> IDBCursor = <span class="built_in">window</span>.IDBCursor || <span class="built_in">window</span>.webkitIDBCursor;</div><div class="line"><span class="keyword">var</span> store = database.transaction(<span class="string">"users"</span>).objectStore(<span class="string">"users"</span>),</div><div class="line">	request = store.openCursor(<span class="literal">null</span>, IDBCursor.NEXT_NO_DUPLICATE);</div></pre></td></tr></table></figure>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>引用对象存储空间，调用<code>createIndex()</code>方法创建索引：<br>第一个参数是索引名称<br>第二个参数是索引属性的名称<br>第三个参数是包含unique属性的选项</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = database.transaction(<span class="string">"users"</span>).objectStore(<span class="string">"users"</span>),</div><div class="line">	index = store.createIndex(<span class="string">"username"</span>, <span class="string">"username"</span>, &#123; <span class="attr">unique</span>: <span class="literal">false</span>&#125;);</div></pre></td></tr></table></figure>
+<p>引用对象存储空间，调用<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">索引的属性：</div><div class="line">name | 索引的名字</div><div class="line">keyPath | 传入createIndex()中的属性的路径</div><div class="line">objectStore | 索引对象的存储空间</div><div class="line">unique | 表示索引键是否唯一的布尔值</div><div class="line"></div><div class="line">```javascript</div><div class="line">	index = store.index(&quot;username&quot;);</div></pre></td></tr></table></figure></p>
+<p>在索引上调用<code>openCursor()</code>可以创建新的游标，在<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在索引上调用`openKeyCursor()`只返回每条记录主键的游标，在`event.result.key`属性中保存的是索引键，在`event.result.value`属性中保存的是主键</div><div class="line"></div><div class="line">```javascript</div><div class="line">var store = database.transaction(&quot;users&quot;).objectStore(&quot;users&quot;),</div><div class="line">	index = store.index(&quot;username&quot;),</div><div class="line">	request = index.openKeyCursor();</div><div class="line">request.onseccess = function(event)&#123;</div><div class="line">	//event.result.key 保存索引键</div><div class="line">	//event.result.value 保存主键</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用<code>get()</code>方法能够从索引中取得一个对象，传入索引键</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = database.transaction(<span class="string">"users"</span>).objectStore(<span class="string">"users"</span>),</div><div class="line">	index = store.index(<span class="string">"username"</span>),</div><div class="line">	request = index.get(<span class="string">"007"</span>);</div><div class="line">request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	<span class="comment">//event.result.key 保存索引键</span></div><div class="line">	<span class="comment">//event.result.value </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用<code>getKey()</code>方法根据索引键取得主键</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = database.transaction(<span class="string">"users"</span>).objectStore(<span class="string">"users"</span>),</div><div class="line">	index = store.index(<span class="string">"username"</span>),</div><div class="line">	request = index.getKey(<span class="string">"007"</span>);</div><div class="line">request.onseccess = <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">	<span class="comment">//event.result.key 保存索引键</span></div><div class="line">	<span class="comment">//event.result.value 保存主键</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>通过对象存储对象的<code>indexNames</code>属性，可以访问到该空间的所有索引</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = database.transaction(<span class="string">"users"</span>).objectStore(<span class="string">"users"</span>),</div><div class="line">	indexNames = store.indexNames,</div><div class="line">	index,</div><div class="line">	i = <span class="number">0</span>,</div><div class="line">	len = indexNames.length;</div><div class="line"><span class="keyword">while</span>(i &lt; len)&#123;</div><div class="line">	index = store.index(indexNames[i++]);</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"Index name: "</span> + index.name + <span class="string">", KeyPath: "</span> + index.keyPath + <span class="string">", unique: "</span> + index.unique);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在对象存储空间上使用<code>deleteIndex()</code>方法传入索引名字可以删除索引</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> store = database.transaction(<span class="string">"uesrs"</span>).objectStore(<span class="string">"users"</span>);</div><div class="line">store.deleteIndex(<span class="string">"username"</span>);</div></pre></td></tr></table></figure>
 
-block copyright
-    include partial/copyright
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://brandon.vc/2016/11/17/javascript离线应用与客户端缓存/" data-id="cj7rq4tvp001bpku275wywdeo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/25/javascript错误处理与调试/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript错误处理与调试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/15/javascript高级技巧/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JavaScript的一些高级技巧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript扩展/">JavaScript扩展</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript框架/">JavaScript框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动开发/">移动开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tip/">tip</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 18px;">CSS</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/HTML/" style="font-size: 16px;">HTML</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/mobile/" style="font-size: 14px;">mobile</a> <a href="/tags/responsive/" style="font-size: 14px;">responsive</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/15/jQuery 插件封装的方法/">jQuery 插件封装的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/原生js获取鼠标坐标方法/">原生js获取鼠标坐标方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/02/TypeScript入门/">TypeScript入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/Git基础/">Git基础</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/10/Webpack基础/">Webpack基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Brandon<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

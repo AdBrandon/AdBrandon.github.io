@@ -1,21 +1,536 @@
-extends partial/layout
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jQuery基础 | Brandon&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="jQuery 是一个 JavaScript 库，极大地简化了 JavaScript 编程。write Less，Do More">
+<meta name="keywords" content="JavaScript,jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery基础">
+<meta property="og:url" content="http://brandon.vc/2016/10/15/jQuery基础/index.html">
+<meta property="og:site_name" content="Brandon&#39;s blog">
+<meta property="og:description" content="jQuery 是一个 JavaScript 库，极大地简化了 JavaScript 编程。write Less，Do More">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-07-14T03:39:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery基础">
+<meta name="twitter:description" content="jQuery 是一个 JavaScript 库，极大地简化了 JavaScript 编程。write Less，Do More">
+  
+    <link rel="alternate" href="/atom.xml" title="Brandon&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-block site_title
-    != page.title + " · " + config.title
+</head>
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Brandon&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://brandon.vc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-jQuery基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/15/jQuery基础/" class="article-date">
+  <time datetime="2016-10-15T06:12:44.000Z" itemprop="datePublished">2016-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript框架/">JavaScript框架</a>
+  </div>
 
-block container
-    include mixins/post
-    +post(page)
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery基础
+    </h1>
+  
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>jQuery 是一个 JavaScript 库，极大地简化了 JavaScript 编程。<code>write Less，Do More</code><br><a id="more"></a></p>
+<h2 id="DOM-操作"><a href="#DOM-操作" class="headerlink" title="DOM 操作"></a>DOM 操作</h2><h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><p>1，查找元素节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;selector&quot;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>选择器</p>
+</blockquote>
+<p>2，查找属性节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;selector&quot;).attr(&quot;title&quot;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>一个参数为返回属性值，两个参数设置属性值</p>
+</blockquote>
+<p>3，创建元素/文本/属性节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(&quot;&lt;p class=&quot;box&quot;&gt;这是一个段落&lt;/p&gt;&quot;)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>html标签（可包含整条内容）</p>
+</blockquote>
+<p>4，插入节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">append()</div><div class="line">appendTo()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>向每个匹配元素内部追加节点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">prepend()</div><div class="line">prependTo()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>向每个匹配元素内部前置节点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">after()</div><div class="line">insertAfter()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>向每个匹配元素之后追加节点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">before()</div><div class="line">insertBefore()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>向每个匹配元素之前追加节点</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p"</span>).append(<span class="string">"&lt;b&gt;你好&lt;/b&gt;"</span>);</div><div class="line">$(<span class="string">"&lt;b&gt;你好&lt;/b&gt;"</span>).appendTo(<span class="string">"p"</span>);</div></pre></td></tr></table></figure>
+<p>5，删除节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">remove()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>从dom中删除，重新插入时绑定的事件会丢失</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">detach()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>从dom中删除，重新插入时绑定的事件会保留</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">empty()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>清空节点</p>
+</blockquote>
+<p>6，复制节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clone()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>不附带事件行为</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clone(<span class="literal">true</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>附带事件行为</p>
+</blockquote>
+<p>7，替换节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">replaceWith()</div><div class="line">replaceAll()</div></pre></td></tr></table></figure>
+<p>8，包裹节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wrap()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>单独包裹</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">warpAll()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>全部包裹成一个</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"strong"</span>).wrap(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</div><div class="line">$(<span class="string">"strong"</span>).wrapAll(<span class="string">"&lt;b&gt;&lt;/b&gt;"</span>);</div></pre></td></tr></table></figure>
+<p>9，包裹子节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wrapInner()</div></pre></td></tr></table></figure>
+<h3 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h3><p>1，获取/设置属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">attr()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>获取属性：属性名</p>
+<p>设置属性：属性名，属性值</p>
+</blockquote>
+<p>2，删除属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">removeAttr()</div></pre></td></tr></table></figure>
+<h3 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h3><p>1，设置class</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">attr(<span class="string">"class"</span>)</div></pre></td></tr></table></figure>
+<p>2，追加class</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">addClass()</div></pre></td></tr></table></figure>
+<p>3，移除class</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">removeClass()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>删除所有class</p>
+<p>删除指定class：className</p>
+</blockquote>
+<p>4，切换class</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">toggleClass()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果类名存在，则删除；如果不存在，则添加</p>
+</blockquote>
+<p>5，判断class是否存在</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hasClass()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果有，返回true，否则返回false</p>
+</blockquote>
+<h3 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h3><p>1，HTML</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">html()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>类似于innerHTML，需要设置只需当做参数传递进去</p>
+</blockquote>
+<p>2，文本节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">text()</div></pre></td></tr></table></figure>
+<p>3，值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">val()</div></pre></td></tr></table></figure>
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.each()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>全局函数：数组或对象，回调函数（回调函数有两个参数：索引，内容）</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.each(data, <span class="function"><span class="keyword">function</span>(<span class="params">commentIndex, comment</span>)</span>&#123;</div><div class="line">  <span class="comment">//处理数据</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>1，子节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">children()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>匹配所有子元素</p>
+</blockquote>
+<p>2，同辈节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">next()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>匹配元素后面紧邻的同辈元素</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">prev()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>匹配元素前面紧邻的同辈元素</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">siblings()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>匹配所有同辈元素</p>
+</blockquote>
+<p>3，父节点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">closest()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>先判断自身是否匹配，然后逐级向上匹配</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parent()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>父节点</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">parents()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>祖先节点</p>
+</blockquote>
+<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><p><code>css()</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p"</span>).css(<span class="string">"opacity"</span>,<span class="string">"0.5"</span>)</div></pre></td></tr></table></figure>
+<h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">offset().left</div><div class="line">offset().top</div></pre></td></tr></table></figure>
+<blockquote>
+<p>相对视窗定位</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">position().left</div><div class="line">position().top</div></pre></td></tr></table></figure>
+<blockquote>
+<p>相对设置position的祖先节点的定位</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">scrollTop()</div><div class="line">scrollLeft()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>相对元素滚动条的定位，传参数可以滚动到指定位置</p>
+</blockquote>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><h3 id="window"><a href="#window" class="headerlink" title="window"></a>window</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready()</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$().ready()</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$()</div></pre></td></tr></table></figure>
+<h3 id="事件绑定"><a href="#事件绑定" class="headerlink" title="事件绑定"></a>事件绑定</h3><p><code>bind(TYPE, [data,] fn)</code></p>
+<blockquote>
+<p>事件类型：blur、focus、load、resize、scroll、unload、click、bdlclick（双击）、mousedown、mouseup、mousemove、mouseover（穿过自身及子元素）、mouseout（离开自身及子元素）、mouseenter（仅穿过自身）、mouseleave（仅离开自身）、change、select、submit、keydown、keypress、keyup、error等</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">one()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>与bind不同的是仅触发一次</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">blur()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>简写</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hover(enterFn, leaveFn)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>悬停事件</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">toggle(fn1, fn2, fn3...)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>鼠标连点事件，重复轮番调用</p>
+</blockquote>
+<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.stopPropagation()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>阻止事件冒泡</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.preventDefault()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>阻止默认行为</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>阻止冒泡及默认行为</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.type</div></pre></td></tr></table></figure>
+<blockquote>
+<p>返回事件类型</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.target</div></pre></td></tr></table></figure>
+<blockquote>
+<p>返回触发事件的对象</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">event.pageX</div><div class="line">event.pageY</div></pre></td></tr></table></figure>
+<blockquote>
+<p>返回光标的坐标</p>
+</blockquote>
+<h3 id="移除事件"><a href="#移除事件" class="headerlink" title="移除事件"></a>移除事件</h3><p><code>unbind([TYPE])</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).unbind(<span class="string">"click"</span>);</div></pre></td></tr></table></figure>
+<h3 id="事件模拟"><a href="#事件模拟" class="headerlink" title="事件模拟"></a>事件模拟</h3><p><code>trigger(TYPE[,data])</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div"</span>).trigger(<span class="string">"click"</span>);</div><div class="line">$(<span class="string">"div"</span>).click();</div><div class="line">$(<span class="string">"div"</span>).trigger(<span class="string">"click"</span>,[<span class="string">"我的"</span>,<span class="string">"事件"</span>]);  <span class="comment">//一般用于检测是否模拟事件</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">triggerHandler()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>模拟事件且阻止浏览器默认行为</p>
+</blockquote>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><h3 id="隐藏-显示"><a href="#隐藏-显示" class="headerlink" title="隐藏/显示"></a>隐藏/显示</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">show()</div><div class="line">hide()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>隐藏元素；可以带参数（”slow”-&gt;600、”normal”-&gt;400、”fast”-&gt;200、1000等）</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fadeIn()</div><div class="line">fadeOut()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>仅改变透明度</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">slideUp()</div><div class="line">slideDown()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>仅改变高度</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">animate()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>自定义动画</p>
+<p>animate(params, speed, callback);</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="keyword">this</span>).animate(&#123;<span class="attr">left</span>:<span class="string">"+=500px"</span>,<span class="attr">top</span>:<span class="string">"200px"</span>&#125;,<span class="number">300</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  $(<span class="keyword">this</span>).css(<span class="string">"border"</span>,<span class="string">"5px solid blue"</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stop()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>停止动画：是否清空动画队列，是否直接跳转到末状态（只能设置到正在执行的动画末）</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">is(<span class="string">":animated"</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>判断是否处于动画状态</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">delay()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>延迟动画：1000</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">toggle()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>切换可见状态</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">slideToggle()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>改变高度切换可见状态</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fadeTo()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>调整不透明度</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="keyword">this</span>).next().fadeTo(<span class="number">600</span>, <span class="number">0.2</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fadeToggle()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>改变不透明度切换可见状态</p>
+</blockquote>
+<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a>Ajax</h2><h3 id="1层"><a href="#1层" class="headerlink" title="1层"></a>1层</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.ajax(options)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>参数是一个对象，包含所有内容</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;  <span class="comment">//所有参数均为可选</span></div><div class="line">  type : <span class="string">"GET"</span>,</div><div class="line">  url : <span class="string">"test.js"</span>,</div><div class="line">  data : <span class="comment">//Object或String</span></div><div class="line">  dataType : <span class="string">"text"</span>, <span class="comment">//返回数据类型：xml，html，jason，script等</span></div><div class="line">  beforeSend : <span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest</span>)</span>&#123;&#125;,<span class="comment">//用于自定义HTTP头</span></div><div class="line">  complete : <span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest, textStatus</span>)</span>&#123;&#125;,<span class="comment">//无论是否成功，完成后的回调函数</span></div><div class="line">  success : <span class="function"><span class="keyword">function</span>(<span class="params">data, textStatus</span>)</span>&#123;&#125;,<span class="comment">//请求成功后的回调函数</span></div><div class="line">  error : <span class="function"><span class="keyword">function</span>(<span class="params">XMLHttpRequest, textStatus, errorThrown</span>)</span>&#123;&#125;,<span class="comment">//请求错误的回调函数（最后一个参数：错误对象可选）</span></div><div class="line">  global : <span class="literal">true</span> <span class="comment">//默认，表示是否触发全局Ajax事件</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="2层"><a href="#2层" class="headerlink" title="2层"></a>2层</h3><p>载入HTML文档</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">load(url [, data] [, callback])</div></pre></td></tr></table></figure>
+<blockquote>
+<p>载入：url，data，callback；回调函数拥有三个参数：responseText(返回内容)，textStatus(请求状态)，XMLHttpRequest（对象）</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#resText"</span>).load(<span class="string">"test.html"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">responseText, textStatus, XMLHttpRequest</span>)</span>&#123;</div><div class="line">  <span class="comment">//回调函数；无论是否成功，均会调用回调函数</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">load(url selector)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>仅载入匹配元素</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.get(url [, data] [, callback] [, type])</div></pre></td></tr></table></figure>
+<blockquote>
+<p>多一个服务器返回内容的格式</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$.get(<span class="string">"test.php"</span>, &#123;</div><div class="line">  username : $(<span class="string">"#username"</span>).val(),</div><div class="line">  content : $(<span class="string">"#content"</span>).val()</div><div class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">data, textStatus</span>)</span>&#123;</div><div class="line">  <span class="comment">//回调函数；当数据成功返回时，才会调用回调函数</span></div><div class="line">  <span class="comment">//$("resText").html(data);//返回为html时使用</span></div><div class="line">  <span class="keyword">var</span> username = data.username;</div><div class="line">&#125;,<span class="string">"json"</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.post()</div></pre></td></tr></table></figure>
+<h3 id="3层"><a href="#3层" class="headerlink" title="3层"></a>3层</h3><p><code>$.getScript()</code>动态加载js文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#send"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  $.getScript(<span class="string">"test,js"</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p><code>$.getJSON()</code>加载JSON文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.getJSON(<span class="string">"test.js"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">  <span class="comment">//处理数据</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="序列化元素"><a href="#序列化元素" class="headerlink" title="序列化元素"></a>序列化元素</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">serialize()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>直接在表单上调用<code>serialize()</code>即可，自动进行<code>encodeURLComponent()</code>编码；在组件上也可以调用</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">serializeArray()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>序列化为JSON数据</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.param()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>可以用来对普通对象序列化</p>
+</blockquote>
+<h3 id="Ajax全局事件"><a href="#Ajax全局事件" class="headerlink" title="Ajax全局事件"></a>Ajax全局事件</h3><blockquote>
+<p>这是全局事件，只要页面有Ajax使用，就会触发这个事件<br><code>$.ajax(options)</code>里设置<code>global : false</code>将不触发Ajax全局事件</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">ajaxStart(callback)</div><div class="line"></div><div class="line">ajaxStop(callback)</div><div class="line"></div><div class="line">ajaxComplete(callback)</div><div class="line"></div><div class="line">ajaxError(callback)</div><div class="line"></div><div class="line">ajaxSend(callback)</div><div class="line"></div><div class="line">ajaxSuccess(callback)</div></pre></td></tr></table></figure>
 
-block copyright
-    include partial/copyright
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://brandon.vc/2016/10/15/jQuery基础/" data-id="cj7rq4tvl0016pku2eb2e608z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/">jQuery</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/15/javascript高级技巧/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JavaScript的一些高级技巧
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/05/Bootstrap/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Bootstrap</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript扩展/">JavaScript扩展</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript框架/">JavaScript框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动开发/">移动开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tip/">tip</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 18px;">CSS</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/HTML/" style="font-size: 16px;">HTML</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/mobile/" style="font-size: 14px;">mobile</a> <a href="/tags/responsive/" style="font-size: 14px;">responsive</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/15/jQuery 插件封装的方法/">jQuery 插件封装的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/原生js获取鼠标坐标方法/">原生js获取鼠标坐标方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/02/TypeScript入门/">TypeScript入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/Git基础/">Git基础</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/10/Webpack基础/">Webpack基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Brandon<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

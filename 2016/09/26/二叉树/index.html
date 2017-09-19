@@ -1,21 +1,315 @@
-extends partial/layout
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>js数据结构和算法 二叉树 | Brandon&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="二叉树（Binary Tree）是n（n&amp;gt;=0）个结点的有限集合，该集合或者为空集（空二叉树），或者由一个根结点和两棵互不相交的、分别称为根结点的左子树和右子树的二叉树组成。">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js数据结构和算法 二叉树">
+<meta property="og:url" content="http://brandon.vc/2016/09/26/二叉树/index.html">
+<meta property="og:site_name" content="Brandon&#39;s blog">
+<meta property="og:description" content="二叉树（Binary Tree）是n（n&amp;gt;=0）个结点的有限集合，该集合或者为空集（空二叉树），或者由一个根结点和两棵互不相交的、分别称为根结点的左子树和右子树的二叉树组成。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://brandon.vc/images/article/tree01.jpeg">
+<meta property="og:image" content="http://brandon.vc/images/article/tree02.jpeg">
+<meta property="og:image" content="http://brandon.vc/images/article/tree03.jpeg">
+<meta property="og:image" content="http://brandon.vc/images/article/tree04.png">
+<meta property="og:image" content="http://brandon.vc/images/article/tree05.png">
+<meta property="og:image" content="http://brandon.vc/images/article/tree06.jpeg">
+<meta property="og:image" content="http://brandon.vc/images/article/tree07.jpeg">
+<meta property="og:image" content="http://brandon.vc/images/article/tree08.jpeg">
+<meta property="og:image" content="http://brandon.vc/images/article/tree09.jpeg">
+<meta property="og:image" content="http://brandon.vc/images/article/tree10.jpeg">
+<meta property="og:updated_time" content="2017-07-15T06:11:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js数据结构和算法 二叉树">
+<meta name="twitter:description" content="二叉树（Binary Tree）是n（n&amp;gt;=0）个结点的有限集合，该集合或者为空集（空二叉树），或者由一个根结点和两棵互不相交的、分别称为根结点的左子树和右子树的二叉树组成。">
+<meta name="twitter:image" content="http://brandon.vc/images/article/tree01.jpeg">
+  
+    <link rel="alternate" href="/atom.xml" title="Brandon&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
 
-block site_title
-    != page.title + " · " + config.title
+</head>
 
-block description
-    - var desc = page.desc || page.title + ' - ' + config.author;
-    meta(name="description", content=desc)
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Brandon&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://brandon.vc"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-二叉树" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/26/二叉树/" class="article-date">
+  <time datetime="2016-09-26T11:19:43.000Z" itemprop="datePublished">2016-09-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JavaScript扩展/">JavaScript扩展</a>
+  </div>
 
-block container
-    include mixins/post
-    +post(page)
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js数据结构和算法 二叉树
+    </h1>
+  
 
-block pagination
-    include mixins/paginator
-    +post()
-    include partial/comment
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>二叉树（Binary Tree）是n（n&gt;=0）个结点的有限集合，该集合或者为空集（空二叉树），或者由一个根结点和两棵互不相交的、分别称为根结点的左子树和右子树的二叉树组成。<br><a id="more"></a><br><img src="/images/article/tree01.jpeg" alt="Binary Tree"></p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>每个结点最多有两棵子树，所以二叉树中不存在度大于2的结点。二叉树中每一个节点都是一个对象，每一个数据节点都有三个指针，分别是指向父母、左孩子和右孩子的指针。每一个节点都是通过指针相互连接的。相连指针的关系都是父子关系。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>二叉树节点定义如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct BinaryTreeNode</div><div class="line">&#123;</div><div class="line">    int m_nValue;</div><div class="line">    BinaryTreeNode* m_pLeft;</div><div class="line">    BinaryTreeNode* m_pRight;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="五种基本形态"><a href="#五种基本形态" class="headerlink" title="五种基本形态"></a>五种基本形态</h2><ul>
+<li>空二叉树</li>
+<li>只有一个根结点</li>
+<li>根结点只有左子树</li>
+<li>根结点只有右子树</li>
+<li>根结点既有左子树又有右子树</li>
+</ul>
+<p><img src="/images/article/tree02.jpeg" alt="Binary Tree"></p>
+<p>拥有三个结点的普通树只有两种情况：两层或者三层。但由于二叉树要区分左右，所以就会演变成如下的五种形态：</p>
+<p><img src="/images/article/tree03.jpeg" alt="Binary Tree"></p>
+<h2 id="特殊二叉树"><a href="#特殊二叉树" class="headerlink" title="特殊二叉树"></a>特殊二叉树</h2><h3 id="斜树"><a href="#斜树" class="headerlink" title="斜树"></a>斜树</h3><p>如上面倒数第一副图的第2、3小图所示。</p>
+<h3 id="满二叉树"><a href="#满二叉树" class="headerlink" title="满二叉树"></a>满二叉树</h3><p>在一棵二叉树中，如果所有分支结点都存在左子树和右子树，并且所有叶子都在同一层上，这样的二叉树称为满二叉树。如下图所示：</p>
+<p><img src="/images/article/tree04.png" alt="Binary Tree"></p>
+<h3 id="完全二叉树"><a href="#完全二叉树" class="headerlink" title="完全二叉树"></a>完全二叉树</h3><p>完全二叉树是指最后一层左边是满的，右边可能满也可能不满，然后其余层都是满的。一个深度为k，节点个数为 2^k - 1 的二叉树为满二叉树（完全二叉树）。就是一棵树，深度为k，并且没有空位。</p>
+<p>完全二叉树的特点有：</p>
+<ul>
+<li>叶子结点只能出现在最下两层。</li>
+<li>最下层的叶子一定集中在左部连续位置。</li>
+<li>倒数第二层，若有叶子结点，一定都在右部连续位置。</li>
+<li>如果结点度为1，则该结点只有左孩子。</li>
+<li>同样结点树的二叉树，完全二叉树的深度最小。</li>
+</ul>
+<p><img src="/images/article/tree05.png" alt="Binary Tree"></p>
+<blockquote>
+<p>满二叉树一定是完全二叉树，但完全二叉树不一定是满二叉树。</p>
+</blockquote>
+<p>算法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">bool is_complete(tree *root)  </div><div class="line">&#123;  </div><div class="line">    queue q;  </div><div class="line">    tree *ptr;  </div><div class="line">    <span class="comment">// 进行广度优先遍历（层次遍历），并把NULL节点也放入队列  </span></div><div class="line">    q.push(root);  </div><div class="line">    <span class="keyword">while</span> ((ptr = q.pop()) != NULL)  </div><div class="line">    &#123;  </div><div class="line">        q.push(ptr-&gt;left);  </div><div class="line">        q.push(ptr-&gt;right);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    <span class="comment">// 判断是否还有未被访问到的节点  </span></div><div class="line">    <span class="keyword">while</span> (!q.is_empty())  </div><div class="line">    &#123;  </div><div class="line">        ptr = q.pop();  </div><div class="line"></div><div class="line">        <span class="comment">// 有未访问到的的非NULL节点，则树存在空洞，为非完全二叉树  </span></div><div class="line">        <span class="keyword">if</span> (NULL != ptr)  </div><div class="line">        &#123;  </div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2><ul>
+<li><p>在二叉树的第i层上至多有2^(i-1)个结点(i&gt;=1)</p>
+</li>
+<li><p>深度为k的二叉树至多有2^k-1个结点(k&gt;=1)</p>
+</li>
+</ul>
+<h2 id="顺序存储结构"><a href="#顺序存储结构" class="headerlink" title="顺序存储结构"></a>顺序存储结构</h2><p>二叉树的顺序存储结构就是用一维数组存储二叉树中的各个结点，并且结点的存储位置能体现结点之间的逻辑关系。</p>
+<p><img src="/images/article/tree06.jpeg" alt="Binary Tree"></p>
+<h2 id="二叉链表"><a href="#二叉链表" class="headerlink" title="二叉链表"></a>二叉链表</h2><p>既然顺序存储方式的适用性不强，那么我们就要考虑链式存储结构啦。二叉树的存储按照国际惯例来说一般也是采用链式存储结构的。</p>
+<p>二叉树每个结点最多有两个孩子，所以为它设计一个数据域和两个指针域是比较自然的想法，我们称这样的链表叫做二叉链表。</p>
+<p><img src="/images/article/tree07.jpeg" alt="Binary Tree"></p>
+<h2 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h2><p>二叉树的遍历(traversing binary tree)是指从根结点出发，按照某种次序依次访问二叉树中所有结点，使得每个结点被访问一次且仅被访问一次。</p>
+<p>二叉树的遍历有三种方式，如下：</p>
+<p>1.前序遍历（DLR），首先访问根结点，然后遍历左子树，最后遍历右子树。简记根-左-右。<br>2.中序遍历（LDR），首先遍历左子树，然后访问根结点，最后遍历右子树。简记左-根-右。<br>3.后序遍历（LRD），首先遍历左子树，然后遍历右子树，最后访问根结点。简记左-右-根。 </p>
+<h3 id="前序遍历："><a href="#前序遍历：" class="headerlink" title="前序遍历："></a>前序遍历：</h3><p>若二叉树为空，则空操作返回，否则先访问根结点，然后前序遍历左子树，再前序遍历右子树。<br><img src="/images/article/tree08.jpeg" alt="Binary Tree"></p>
+<blockquote>
+<p>遍历的顺序为：A B D H I E J C F K G</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//先序遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">preOrder</span>(<span class="params">node</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!node == <span class="literal">null</span>)&#123;</div><div class="line">        putstr(node.show()+ <span class="string">" "</span>);</div><div class="line">        preOrder(node.left);</div><div class="line">        preOrder(node.right);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="中序遍历："><a href="#中序遍历：" class="headerlink" title="中序遍历："></a>中序遍历：</h3><p>若树为空，则空操作返回，否则从根结点开始（注意并不是先访问根结点），中序遍历根结点的左子树，然后是访问根结点，最后中序遍历右子树。<br><img src="/images/article/tree09.jpeg" alt="Binary Tree"></p>
+<blockquote>
+<p>遍历的顺序为：H D I B E J A F K C G</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用递归方式实现中序遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inOrder</span>(<span class="params">node</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!(node == <span class="literal">null</span>))&#123;</div><div class="line">        inOrder(node.left);<span class="comment">//先访问左子树</span></div><div class="line">        putstr(node.show()+ <span class="string">" "</span>);<span class="comment">//再访问根节点</span></div><div class="line">        inOrder(node.right);<span class="comment">//最后访问右子树</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="后序遍历："><a href="#后序遍历：" class="headerlink" title="后序遍历："></a>后序遍历：</h3><p>若树为空，则空操作返回，否则从左到右先叶子后结点的方式遍历访问左右子树，最后访问根结点。<br><img src="/images/article/tree10.jpeg" alt="Binary Tree"></p>
+<blockquote>
+<p>遍历的顺序为：H I D J E B K F G C A</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//后序遍历</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">postOrder</span>(<span class="params">node</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!node == <span class="literal">null</span>)&#123;</div><div class="line">        postOrder(node.left);</div><div class="line">        postOrder(node.right);</div><div class="line">        putStr(node.show()+ <span class="string">" "</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实现二叉查找树"><a href="#实现二叉查找树" class="headerlink" title="实现二叉查找树"></a>实现二叉查找树</h2><p>二叉查找树（BST）由节点组成，所以我们定义一个Node节点对象如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Node</span>(<span class="params">data,left,right</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.data = data;</div><div class="line">    <span class="keyword">this</span>.left = left;<span class="comment">//保存left节点链接</span></div><div class="line">    <span class="keyword">this</span>.right = right;</div><div class="line">    <span class="keyword">this</span>.show = show;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.data;<span class="comment">//显示保存在节点中的数据</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="查找最大和最小值"><a href="#查找最大和最小值" class="headerlink" title="查找最大和最小值"></a>查找最大和最小值</h2><p>查找BST上的最小值和最大值非常简单，因为较小的值总是在左子节点上，在BST上查找最小值，只需遍历左子树，直到找到最后一个节点</p>
+<h3 id="查找最小值"><a href="#查找最小值" class="headerlink" title="查找最小值"></a>查找最小值</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMin</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> current = <span class="keyword">this</span>.root;</div><div class="line">    <span class="keyword">while</span>(!(current.left == <span class="literal">null</span>))&#123;</div><div class="line">        current = current.left;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> current.data;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>该方法沿着BST的左子树挨个遍历，直到遍历到BST最左的节点，该节点被定义为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">current.left = <span class="literal">null</span>;</div></pre></td></tr></table></figure></p>
+<p>这时，当前节点上保存的值就是最小值</p>
+<h3 id="查找最大值"><a href="#查找最大值" class="headerlink" title="查找最大值"></a>查找最大值</h3><p>在BST上查找最大值只需要遍历右子树，直到找到最后一个节点，该节点上保存的值就是最大值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getMax</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> current = <span class="keyword">this</span>.root;</div><div class="line">    <span class="keyword">while</span>(!(current.right == <span class="literal">null</span>))&#123;</div><div class="line">        current = current.right;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> current.data;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
-block copyright
-    include partial/copyright
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://brandon.vc/2016/09/26/二叉树/" data-id="cj7rq4tw9001upku2b2ulka8r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/10/05/Bootstrap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Bootstrap
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/09/23/Ajax与Comet/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Ajax与Comet</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/">CSS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript扩展/">JavaScript扩展</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript框架/">JavaScript框架</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tools/">tools</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/移动开发/">移动开发</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bootstrap/">Bootstrap</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Canvas/">Canvas</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSON/">JSON</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TypeScript/">TypeScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/XML/">XML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jQuery/">jQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobile/">mobile</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/responsive/">responsive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tip/">tip</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Bootstrap/" style="font-size: 10px;">Bootstrap</a> <a href="/tags/CSS/" style="font-size: 18px;">CSS</a> <a href="/tags/Canvas/" style="font-size: 10px;">Canvas</a> <a href="/tags/HTML/" style="font-size: 16px;">HTML</a> <a href="/tags/JSON/" style="font-size: 10px;">JSON</a> <a href="/tags/JavaScript/" style="font-size: 20px;">JavaScript</a> <a href="/tags/TypeScript/" style="font-size: 10px;">TypeScript</a> <a href="/tags/Webpack/" style="font-size: 10px;">Webpack</a> <a href="/tags/XML/" style="font-size: 10px;">XML</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/mobile/" style="font-size: 14px;">mobile</a> <a href="/tags/responsive/" style="font-size: 14px;">responsive</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/05/15/jQuery 插件封装的方法/">jQuery 插件封装的方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/05/原生js获取鼠标坐标方法/">原生js获取鼠标坐标方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/02/TypeScript入门/">TypeScript入门</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/14/Git基础/">Git基础</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/10/Webpack基础/">Webpack基础</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Brandon<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
