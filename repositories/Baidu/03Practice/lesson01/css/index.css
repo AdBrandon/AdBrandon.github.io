@@ -1,0 +1,45 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 400px;
+	margin: 0 auto;
+	font-family: "Microsoft YaHei";
+}
+div{
+	border: 1px solid #eee;
+	padding: 50px 0;
+
+}
+label{
+	margin-left: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	margin-right: 10px;
+	color: #666;
+}
+input{
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #999;
+	box-shadow: 0 0 3px #ccc inset;
+	padding-left: 5px;
+}
+button{
+	width: 80px;
+	height: 30px;
+	margin-left: 10px;
+	background-color: #384AEF;
+	color:#fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+p{
+	width: 100%;
+	padding-left: 90px;
+	color: #aaa;
+	font-size: 14px;
+	line-height: 40px;
+}

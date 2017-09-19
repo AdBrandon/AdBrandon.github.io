@@ -1,0 +1,130 @@
+body{
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #dedede;
+	font-family:"Microsoft YaHei","黑体","宋体",sans-serif; 
+}
+
+li a{
+	text-decoration: none;
+}
+header{
+	width: 100%;
+	background-color: #333;
+	height: 60px;
+}
+header img{
+	height: 60px;
+	position: absolute;
+	left: 20px;
+}
+header ul{
+	width: 450px;
+	height: 60px;
+	position: absolute;
+	right: 20px;
+	top: 0;
+	/* line-height: 60px; */
+} 
+header ul li{
+	float: left;
+	margin-left: 30px;
+}
+header ul li a{
+	color: white;
+}
+article, aside{
+	margin: 20px;
+	background-color: #fff;
+	padding: 20px;
+	box-shadow: 2px 2px 1px #888;
+}
+h2{
+	font-size: 20px;
+}
+h3{
+	color: #666;
+	font-size: 16px;
+	font-weight: bold; 
+}
+h4{
+	color: #888;
+	font-size: 12px;
+}
+article p{
+	text-indent: 2em;
+	font-size: 14px;
+}
+article a {
+	color: blue;
+}
+article ul li{
+	list-style: none;
+}
+article div{
+	border: 1px solid black;
+	width:366px;
+	padding: 0px 10px 10px 10px;
+	margin:10px;
+}
+article table{
+	border-collapse: collapse;
+	width: 100%
+
+}
+article table th{
+	text-align: left;
+	background-color: #333;
+	color: #fff;
+}
+article table td{
+	border:1px solid #ccc;
+
+}
+article table tr:last-child{
+	background-color: #ccc;
+	font-weight: bold;
+}
+aside h2{
+	border-left: 3px solid #cacaca;
+	padding: 5px 10px;
+}
+form {
+	line-height: 200%;
+	font-size: 14px;
+}
+.formLeft {
+	position: absolute;
+	right: 65%;
+	text-align: right;
+}
+.formRight {
+	position: absolute;
+	left: 35%;
+} 
+.tips {
+	color: #888;
+} 
+textarea{
+	width: 60%;
+}
+.submit{
+	width: 100%;
+	height: 40px;
+	font-size: 16px;
+	background-color: #3355D0;
+	color: white;
+	font-weight: bold;
+	border: 0;
+	border-radius: 12px;
+}
+footer{
+	width: 100%;
+	height:80px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-size: 10px;
+	line-height: 80px;
+}

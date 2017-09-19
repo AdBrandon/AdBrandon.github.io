@@ -1,0 +1,44 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+.container{
+	padding:20px 0px 0px 20px;
+	border: 1px solid #666;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.container div{
+	width: 150px;
+	margin-bottom: 20px;
+}
+.item1, .item2, .item3{
+	border: 1px solid #f00;
+}
+.item1{
+	height: 120px;
+}
+.item2{
+	height: 100px;
+}
+.item3{
+	height: 40px;
+}
+.item4{
+	height: 200px;
+	border: 1px solid #0f0;
+}
+@media only screen and (min-width: 641px){
+	.container{
+		align-items: center;
+	}
+}
+@media only screen and (max-width: 640px){
+	.container{
+		align-items: flex-start;
+	}
+	.item4{
+		order: -1;
+	}
+}

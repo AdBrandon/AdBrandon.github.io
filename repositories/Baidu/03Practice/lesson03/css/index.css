@@ -1,0 +1,66 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 600px;
+	margin: 0 auto;
+	font-family: "Microsoft YaHei";
+}
+.form{
+	border: 1px solid #eee;
+	padding: 30px 0;
+
+}
+form > input{
+	margin-left: 100px;
+	cursor: pointer;
+}
+form > label{
+	margin-left: 5px;
+	display:inline; 
+}
+label{
+	margin-left: 35px;
+	cursor: pointer;
+	color: #666;
+	display:inline-block; 
+  	width:80px;  
+  	text-align: right;
+}
+div select{
+	width: 100px;
+	margin-right: 20px;
+}
+div select ~ select{
+	width: 280px;
+}
+div > input,select{
+	height: 25px;
+	border-radius: 5px;
+	width: 400px;
+	border: 1px solid #999;
+	box-shadow: 0 0 3px #ccc inset;
+	padding-left: 5px;
+	margin-top: 20px;
+}
+#submit{
+	width: 80px;
+	height: 30px;
+	margin-left: 125px;
+	background-color: #1F89FD;
+	color:#fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-top: 20px;
+}
+p{
+	width: 100%;
+	padding-left: 125px;
+	color: #aaa;
+	font-size: 14px;
+}
+div#selectSchool,div#selectWork{
+	display: none;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="javascript/index.js"></script>
+	<style type="text/css">
+		body{
+			width: 1200px;
+			margin: 0 auto;
+		}
+		span{
+			width: 5px;
+			font-size: 14px;
+		}
+		.box1,.box2,.box3,.box4{
+			margin: 25px 8px;
+			width: 100%;
+			border: 1px solid #555;
+			display: flex;
+			background-color: #fff;
+		}
+		.box1{
+			height: 200px;
+			margin: 10px auto;
+		}
+		#tree{
+			border: 1px solid #555;
+			padding: 20px;
+			margin: 20px 0;
+		}
+		
+	</style>
+</head>
+<body>
+<div  id="tree"><span>13567635081</span>
+	<div class="box1"><span>18958188698</span>
+		<div class="box2"><span>13372523932</span>
+			<div class="box3"><span>17705753392</span>
+				<div class="box4"><span>13295850012</span></div>
+				<div class="box4"><span>18057133070</span></div>
+				<div class="box4"><span>18705708483</span></div>
+			</div>
+		</div>
+		<div class="box2"><span>13705775449</span>
+			<div class="box3"><span>13666682289</span>
+				<div class="box4"><span>15067429048</span></div>
+				<div class="box4"><span>17073077124</span></div>
+			</div>
+		</div>
+		<div class="box2"><span>13297708579</span>
+			<div class="box3"><span>13357157230</span>
+				<div class="box4"><span>18255900309</span></div>
+			</div>
+			<div class="box3"><span>18659932029</span>
+			</div>
+		</div>
+	</div>
+	<div class="box1"><span>13385770635</span>
+		<div class="box2"><span>15068148855</span>
+			<div class="box3"><span>17681591287</span>
+				<div class="box4"><span>13248602222</span></div>
+			</div>
+			<div class="box3"><span>13736676670</span>
+			</div>
+			<div class="box3"><span>13017770371</span>
+				<div class="box4"><span>17681591398</span></div>
+				
+			</div>
+		</div>
+		<div class="box2"><span>17681591239</span>
+			<div class="box3"><span>17681591268</span>
+				<div class="box4"><span>15005795503</span></div>
+				<div class="box4"><span>17681591260</span></div>
+				<div class="box4"><span>18305856338</span></div>
+			</div>
+		</div>
+	</div>
+</div>
+<button id="preOrder">先序遍历</button>
+<button id="postOrder">后续遍历</button>
+<input type="text" name="">
+<button id="preFind">先序查找</button>
+<button id="postFind">后续查找</button>
+</body>
+</html>

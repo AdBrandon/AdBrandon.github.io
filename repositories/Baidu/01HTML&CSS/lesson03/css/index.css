@@ -1,0 +1,48 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-family: "Microsoft YaHei","黑体","宋体",sans-serif;
+}
+div{
+	padding: 20px;
+}
+.outBox{
+	margin: 20px;
+	border: 1px solid #999;
+	background-color: #eee;
+	overflow: auto; 
+}
+.outBox > div{
+	background-color: white;
+	border: 1px solid #999;	
+	display: inline-block;
+
+}
+.left{
+	width: 200px;
+	float: left;
+
+}
+img{
+	width: 80px;
+	height: 80px;
+}
+.left span{
+	float: right;
+	font-weight: bold;
+}
+.content{
+	width: calc(100% - 360px); 
+	margin:0px 20px 0px 20px;
+	
+}
+.right{
+	width: 120px;
+	padding: 20px 0px 0px 0px;
+	float: right;
+}
+
+.right img{
+	margin: 0px 20px 20px 20px;
+} 

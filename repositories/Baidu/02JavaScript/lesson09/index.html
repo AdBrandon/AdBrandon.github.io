@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="javascript/index.js"></script>
+	<style type="text/css">
+		div{
+			margin: 10px;
+			border: 1px solid #555;
+			background-color: #fff;
+			cursor: pointer;
+		}
+		#tree{
+			width: 440px;
+			min-height: 560px;
+			position: relative;
+		}
+		.box2{
+			position: absolute;
+			right: 0px;
+			top: 0px;
+		}
+		#tree > div{
+			width: 200px;
+		}
+		#tree > div > div{
+			width: 180px;
+		}
+		#tree > div > div > div{
+			width: 160px;
+		}
+		#tree > div > div > div > div{
+			width: 140px;
+		}
+		#tree > div > div > div > div > div{
+			width: 120px;
+		}
+	</style>
+</head>
+<body>
+<div  id="tree">13567635081
+	<div>18958188698
+		<div>13372523932
+			<div>17705753392
+				<div>13295850012</div>
+				<div>18057133070</div>
+				<div>18705708483</div>
+			</div>
+		</div>
+		<div>13705775449
+			<div>13666682289
+				<div>15067429048</div>
+				<div>17073077124</div>
+			</div>
+		</div>
+		<div>13297708579
+			<div>13357157230
+				<div>18255900309</div>
+			</div>
+			<div>18659932029
+			</div>
+		</div>
+	</div>
+	<div class="box2">13385770635
+		<div>15068148855
+			<div>17681591287
+				<div>13248602222</div>
+			</div>
+			<div>13736676670
+			</div>
+			<div>13017770371
+				<div>17681591398</div>
+			</div>
+		</div>
+		<div>17681591239
+			<div>17681591268
+				<div>15005795503</div>
+				<div>17681591260</div>
+				<div>18305856338</div>
+			</div>
+		</div>
+	</div>
+</div>
+<button id="preOrder">先序遍历</button>
+<button id="postOrder">后续遍历</button>
+<br>
+<input type="text" name="">
+<button id="preFind">先序查找</button>
+<button id="postFind">后续查找</button>
+<br>
+<input type="text" name="">
+<button id="putIn">插入数据</button>
+<button id="delete">删除数据</button>
+</body>
+</html>

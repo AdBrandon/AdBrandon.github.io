@@ -1,0 +1,82 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+.div1,.div2,.div3{
+	width: 300px;
+	margin: 30px auto;
+	text-align: center;
+}
+table{
+	width: 250px;
+	margin: 25px;
+}
+table thead{
+	color: #fff;
+	background-color: #000;
+}
+table tbody tr:nth-child(odd){
+	background-color: #fff;
+}
+table tbody tr:nth-child(even){
+	background-color: #cbcbcb;
+}
+table tbody tr:nth-child(-n+3){
+	color: #f00;
+}
+input{
+	width: 100px;
+	height: 25px;
+	-webkit-transition:width 0.5s linear;
+	-ms-transition:width 0.5s linear;
+	-moz-transition:width 0.5s linear;
+	-o-transition:width 0.5s linear;
+}
+input:focus{
+	width: 200px;
+	border:none;
+	box-shadow: 0px 0px 5px #7dafea;
+}
+.div3{
+	position: relative;
+	width: 250px;
+	background-color: #666;
+	height: 150px;
+}
+.click{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+.click a{
+	float: left;
+	width: 25px;
+	height: 25px;
+	margin-left: 5px;
+	background-color: rgba(0,0,0,0.5);
+	color: #fff;
+	font-size: 22px;
+	line-height: 25px;
+	text-decoration: none;
+}
+.box{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+}
+#box1{
+	background: -moz-linear-gradient(left,#fff,#008100);
+	background: -webkit-linear-gradient(left,#fff,#008100); 
+}
+#box2{
+	background: -moz-linear-gradient(left,#008100,#0100fe);
+	background: -webkit-linear-gradient(left,#008100,#0100fe);  
+}
+#box3{
+	background: -moz-linear-gradient(left,#0100fe,#000);
+	background: -webkit-linear-gradient(left,#0100fe,#000); 
+}
+.box:target{
+	height: 150px;
+}

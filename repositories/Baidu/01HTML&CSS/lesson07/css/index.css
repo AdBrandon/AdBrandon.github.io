@@ -1,0 +1,726 @@
+* { 
+	padding: 0; 
+	margin: 0; 
+	border: 0; 
+	outline:none;
+} 
+a{
+	text-decoration: none;
+}
+h1,h2{
+	font-weight: normal;
+}
+body{
+	min-width: 1280px;
+	position: relative;
+}
+header {
+	height: 56px;
+	background-color: #fff;
+}
+header .logo{
+	position: absolute;
+	top: 13px;
+	left: 59px;
+}
+header .title{
+	position: absolute;
+	top: 18px;
+	left: 101px;
+	font-family: "SimHei";
+	font-size: 21px;
+	color: #393a3a;
+	line-height: 21px;
+}
+header .login{
+	float: right;
+	margin-right: 67px;
+	margin-top: 13px;
+	font-family: "Microsoft YaHei";
+	font-size: 14px;
+	color: #e74f4d;
+}
+header .login img{
+	margin-right: 5px;
+	margin-top: 3px;
+	margin-left: 7px;
+	float: left;
+} 
+header ul{
+	height: 56px;
+	float: right;
+}
+header li{
+	text-align:center;
+	list-style: none;
+	float: left;
+	margin:0px 5px;
+}
+header li a{
+	display: block;
+	color: #787b83;
+	font-size: 14px;
+	font-family: "Microsoft YaHei";
+	margin-top: 13px;
+	padding: 0px 18px 20px 18px;
+  
+}
+header .focus a, header li a:hover{
+	color: #e74f4d;
+	border-bottom: 5px solid #e74f4d;
+}
+.partA{
+	font-family: "Microsoft YaHei";
+	height: 940px;
+	position: relative;
+	overflow: hidden;
+}
+.partA img{
+	width: 100%;
+}
+.partA .mask{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.2);
+	position: absolute;
+	top: 0px;
+}
+.partA .mask h1{
+	font-size: 60px;
+	color: #fff;
+	position: absolute;
+	top: 217px;
+	left: 116px;
+}
+.partA .mask p{
+	font-size: 21px;
+	color: #fffdfd;
+	width: 300px;
+	position: absolute;
+	top: 304px; 
+	left: 124px;
+	line-height: 32px;
+}
+.partA .mask button{
+	font-family: "Microsoft YaHei";
+	width: 331px;  
+	height: 65px;
+	font-size: 30px;
+	position: absolute;
+	top: 429px; 
+	left: 126px;
+	border: 1px solid #e74f4d;
+	background-color: #e74f4d;
+	color: #fff;
+	cursor:pointer;
+}
+.partA .mask button:hover{
+	background-color: #fff;
+	color: #e74f4d;
+}
+.partA .mask button:active{
+	background-color: #e74f4d;
+	color: #fff;
+}
+.partA .box{
+	width: 100%;
+	height: 250px;
+	position: absolute;
+	top: 690px;
+	background-color: #FFF;
+}
+.partA .box div{
+	width: 25%;
+	float: left;
+	position: relative;
+}
+.partA .box div img{
+	position: absolute;
+	left: 50%;
+	margin-left: -15px;
+	margin-top: 45px;
+}
+.partA .box div .picA{
+	width: 42px;
+	height: 42px;
+	
+}
+.partA .box div .picB, .partA .box div .picC{
+	width: 35px;
+	height: 40px;
+	
+}
+.partA .box div .picD{
+	width: 41px;
+	height: 40px;
+	
+}
+.partA .box div p{
+	border-right: 2px solid #aaa;
+	padding:0px 80px;
+	font-family: "SimHei";
+	font-size: 14px;
+	color: #767777;
+	text-align: center;
+	margin-top: 133px;
+	height: 50px;
+}
+.partA .box .sectionD p{
+	border-right: none;
+}
+.partB{
+	clear: both;
+	width: 100%;
+	height: 361px;
+	background-color: #ededec;
+	position: relative;
+}
+.partB img{
+	position: absolute;
+	top: 89px;
+	left: 50%;
+	margin-left: -45px;
+}
+.partB p{
+	font-family: "SimHei";
+	font-size: 54px;
+	color: rgba(50,51,51,0.5); 
+	width: 100%;
+	text-align: center;
+	position: relative;
+	top: 229px;
+	line-height: 56px;
+}
+
+.partC{
+	width: 100%;
+	height: 341px;
+	overflow: hidden;
+	position: relative;
+	font-family:  "Microsoft YaHei";
+}
+.partC img{
+	width: 100%;
+}
+
+.partC .mask{
+	width: 100%;
+	height: 100%;
+	background-color: rgba(170,52,50,0.2);
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+.partC .mask h1{
+	width: 100%;
+	text-align: center;
+	font-size: 21px;
+	color: #fff;
+	margin-top: 53px;
+	cursor: pointer;
+}
+.partC .mask h1:hover~ h2{
+	width: 325px;
+}
+.partC .mask h2{
+	width: 31px;
+	border-top: 3px solid #fff;
+	margin:10px auto;
+	transition: width 0.4s ease-in-out;
+	-webkit-transition: width 0.4s ease-in-out;
+}
+.partC .mask p{
+	width: 100%;
+	text-align: center;
+	font-size: 12px;
+	color: rgba(255,255,255,0.8);
+	margin-top: 19px;
+}
+.partC .mask .box{
+	position: absolute;
+	left: 50%;
+	margin-left:-515px;
+	top: 170px;
+}
+.partC .mask select{
+	border:none;
+	/*将默认的select选择框样式清除*/
+	appearance:none;
+  	-moz-appearance:none;
+ 	-webkit-appearance:none;
+ 	background: #fff url("../img/select.png") no-repeat scroll right center;
+ 	padding-left: 10px;
+ 	font-family:  "Microsoft YaHei";
+	width: 236px;
+	height: 36px;
+	font-size: 12px;
+	color: #a8aaaa;
+	margin-right: 28px;
+	float: left;
+
+}
+.partC .mask select.focus{
+	border: 2px solid #c26d65;
+} 
+.partC .mask option{
+    background-color: #e3e3e4;
+    font-family:  "Microsoft YaHei";
+    font-size: 12px;
+    color: rgba(50,51,51,0.7);
+}
+.partC .mask button{
+ 	width: 236px;
+ 	height: 36px;
+ 	font-family:  "Microsoft YaHei";
+ 	font-size: 14px;
+ 	float: left;
+ 	padding-left: 20px;
+ 	letter-spacing: 20px;
+ 	cursor:pointer;
+ 	border: 1px solid #be4f48;
+ 	background-color: #be4f48;
+ 	color: #FFF;
+ 	/* 过渡效果 */
+ 	transition: all .2s ease-in;
+ 	-webkit-transition: color .1s ease-in; 
+}
+.partC .mask button:hover{
+ 	background-color: #FFF;
+ 	color: #be4f48;
+}
+.partC .mask button:active{
+ 	background-color: #be4f48;
+ 	color: #FFF;
+}
+.partD{
+ 	background-color: #f7f7f7;
+ 	width: 100%;
+ 	height:605px;
+}
+.partD div{
+	float: left;
+	margin-top: 101px;
+	margin-left:calc(9% - 79px);
+	background-color: #fff;
+	border: 1px solid #dadada;
+ 	border-bottom: none;
+ 	height: 337px;
+}
+.partD img{
+	margin: 11px 7px;
+}
+.partD p{
+	font-family: "Microsoft YaHei";
+    font-size: 15px;
+    text-align: center;
+    color: #323333;
+    margin-top: 10px;
+}
+.partD  p.content{
+    font-size: 12px;
+    color: #888;
+    margin-top: 7px;
+}
+.partD .sectionA{
+	margin-left: calc(36% - 315px);
+}
+.partD .sectionB{
+	border: none;
+	background-color: transparent;
+}
+.partD .sectionB p.city{
+	font-size: 22px;
+	margin-top: -2px;
+	/* 两端对齐 */
+	text-align: justify;
+    text-align-last: justify;
+    width: 165px;
+    margin:-2px auto 0px auto;
+}
+.partD .sectionB p.content{
+	margin-top: 3px;
+}
+.partD .sectionB img{
+	border: 1px solid #dadada;
+	background-color: #fff;
+	padding:11px 7px;
+	margin-top: 5px;
+}
+.partE{
+	font-family: "Microsoft YaHei";
+	width: 100%;
+	height: 567px;
+	overflow: hidden;
+}
+.partE .left{
+	color: #FFF;
+	text-align: center;
+	width: 67%;
+	height: 567px;
+	background: url(../img/image07.png) no-repeat center;
+	background-size: cover;
+	position: relative;
+	display: inline-block;
+}
+.partE .left h2{
+    font-size: 49px;
+    padding-top: 122px;
+}
+.partE .left h1{
+    font-size: 158px;
+    margin-top: -39px;
+    margin-bottom: -14px;
+}
+.partE .left p{
+    font-size: 22px;
+    line-height: 43px;
+}
+.partE .left div{
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-right: 24px solid #fff;
+	position: absolute;
+	right: 0px;
+	top: 50%;
+	margin-top: -15px;
+}
+.partE .right{
+	float: right;
+	width: 33%;
+	background-color: #FFF;
+}
+.partE .right h1{
+	font-family: "SimHei";
+	font-size: 21px;
+	color: #333;
+	width: 100%;
+	text-align: center;
+	margin-top: 163px;
+	margin-bottom: 18px;
+}
+ .partE .right h1 .number{
+	color: #e74f4d;
+	font-weight: bold;
+}
+ .partE .right p{
+	font-family: "SimSun";
+	font-size: 12px;
+	line-height: 30px;
+	color: #aaa;
+	width: 288px;
+	margin: 0px auto;
+}
+.partE .right button{
+	display: block;
+	width: 105px;
+	height: 33px;
+	margin:0px auto;
+	margin-top: 51px;
+	border: 1px solid #e4666a;
+	background-color: #fff;
+	color: #e25c60;
+	 font-family: "Microsoft YaHei"; 
+	font-size: 12px;
+	cursor:pointer;
+}
+.partE .right button:hover{
+	background-color: #e4666a;
+	color: #fff;
+}
+.partE .right button:active{
+	background-color: #fff;
+	color: #e4666a;
+}
+
+.partE .right ul{
+	width: 105px;
+	padding-left: 63px;
+	margin: 10px auto;
+}
+
+.partE .right ul li{
+	list-style: circle;
+	margin-left: 20px;
+	color: #929292;
+	font-size: 30px;
+	cursor:pointer;
+	float: left;
+}
+.partE .right ul li.checked{
+	list-style: disc;
+	font-size: 32px;
+	margin-right: -2px;
+}
+.partF{
+	width: 100%
+	height: 521px;
+	overflow: hidden;
+}
+.partF .sectionA, .partF .sectionC{
+	height: 521px;
+	width: 33%;
+	float: left;
+}
+.partF .sectionB{
+	height: 521px;
+	width: 34%;
+	float: left;
+}
+.partF .sectionA{
+	background-color: #e74f4d;
+}
+.partF p{
+	width: 100%;
+	font-family: "SimHei";
+	font-size: 21px;
+	color: #323333;
+	text-align: center;
+	line-height: 30px;
+	cursor:pointer;
+}
+.partF p:hover~ span{
+	width: 170px;
+}
+.partF p:first-child{
+	margin-top: 169px;
+}
+.partF span{
+	width: 31px;
+	height: 2px;
+	background-color: #aaa;
+	display: block;
+	margin: 19px auto 25px auto;
+ 	transition: width 0.4s ease-in-out;
+	-webkit-transition: width 0.4s ease-in-out;
+}
+.partF button,.partF .sectionA button:hover{
+	display: block;
+	margin: 0px auto;
+	width: 170px;
+	height: 44px;
+	border: 1px solid #e74f4d;
+	background-color: #fff;
+	font-family: "SimHei";
+	font-size: 21px;
+	color: #e74f4d;
+	cursor:pointer;
+}
+.partF .sectionA p{
+	color: #fff;
+}
+.partF .sectionA span{
+	background-color: #fff
+}
+.partF .sectionA button, .partF button:hover{
+	border-color: #fff;
+	background-color: #e74f4d;
+	color: #fff;
+}
+.partF .sectionC{
+	background: url(../img/image08.png) no-repeat center;
+	background-size: cover;
+	position: relative;
+}
+.partF .sectionC .mask{
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0,0,0,0.4);
+	position: absolute;
+	top: 0px;
+}
+.partF .sectionC span{
+	background-color: transparent;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;	
+	border-left: 24px solid #fff;
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	margin-top: -15px;
+}
+.partG{
+	clear: both;
+	width: 100%;
+	height:749px;
+	overflow: hidden;
+}
+.partG .sectionA h1{
+	font-family: "SimHei";
+	font-size: 21px;
+	color: #323333;
+	width: 100%;
+	text-align: center;
+	margin-top: 117px;
+	cursor: pointer;
+}
+.partG .sectionA h1:hover~ div{
+	width: 410px;
+}
+.partG .sectionA div{
+	width: 30px;
+	height: 2px;
+	background-color: #e74f4d;
+	margin:7px auto 12px auto;
+	transition: width 0.4s ease-in-out;
+	-webkit-transition: width 0.4s ease-in-out;
+}
+.partG .sectionA p{
+	font-family: "Microsoft YaHei"; 
+	font-size: 12px;
+	color: #aaa;
+	width: 100%;
+	text-align: center;
+}
+.partG .box{
+	width: 1002px;
+	margin:105px auto;
+	font-family: "SimHei"; 
+}
+.partG .box h1{
+	font-size: 14px;
+	color: rgba(35,24,21,0.8);
+	padding-top: 2px;
+	margin-bottom: 22px;
+}
+.partG .box p{
+	font-size: 12px;
+	color: rgba(35,24,21,0.6);
+	width: 288px;
+	line-height: 21px;
+}
+.partG .box p.more{
+	font-family: "SimHei"; 
+	text-align: right;
+	cursor: pointer;
+	margin-top: -2px;
+	margin-bottom: 28px;
+}
+.partG .sectionC {
+	float: right;
+	margin-top: -313px;
+	width: 639px;
+}
+.partG .box p img{
+	margin-right: 5px;
+}
+.partG .box .sectionB h1:last-of-type{
+	margin-top: -18px;
+	margin-bottom: 8px;
+}
+.partG .box .sectionC input{
+	display: inline-block;
+	float: left;
+	width: 294px;
+	height: 41px;
+	padding-left: 17px;
+	background-color: #ededee;
+	margin-bottom: 13px;
+}
+.partG input::-webkit-input-placeholder,.partG textarea::-webkit-input-placeholder{
+	color: rgba(35,24,21,0.8);
+	font-size: 12px;
+	font-family: "SimSun";
+}
+.partG input.name,.partG input.number{
+	margin-right: 17px;
+}
+.partG .box .sectionC input.submit{
+	padding-left: 0px;
+	width: 639px;
+	font-family: "SimHei";
+	font-size: 14px;
+	color: #323333;
+	cursor: pointer;
+}
+.partG textarea{
+	resize:none;
+	float: left;
+	padding-left: 17px;
+	padding-top: 9px;
+	width: 622px;
+	height: 112px;
+	font-family: "SimSun";
+	font-size: 12px;
+	color: rgba(35,24,21,0.8);
+	background-color: #ededee;
+	margin-bottom: 13px;
+}
+.partH{
+	background-color: #33363f;
+	width: 100%;
+	height: 358px;
+}
+.partH h1{
+	font-family: "SimHei";
+	font-size: 21px;
+	color: #fff;
+	width: 100%;
+	text-align: center;
+	padding-top: 90px;
+	margin-bottom: 6px;
+}
+.partH p{
+	font-family: "SimSun";
+	font-size: 12px;
+	line-height: 18px;
+	color: #fff;
+	width: 468px;
+	margin: 0px auto;
+	text-align: center;
+}
+.partH div{
+	width: 512px;
+	margin: 27px auto 37px auto;
+}
+.partH input{
+	height: 41px;
+	width: 421px;
+	padding-left: 10px;
+	font-family: "Microsoft YaHei"; 
+	font-size: 14px;
+	color: #aaa;
+}
+.partH button{
+	height: 41px;
+	width: 81px;
+	background-color: #6f7178;
+	font-family: "Microsoft YaHei"; 
+	font-size: 15px;
+	color: #FFF;
+	letter-spacing: 10px;
+	float: right;
+	cursor: pointer;
+}
+.partH div:last-of-type{
+	width: 181px;
+}
+.partH div img{
+	float: left;
+	cursor: pointer;
+}
+.partH div img.weibo,.partH div img.twitter{
+	margin-left: 27px;
+}
+.partH div img.earth{
+	margin-left: 20px;
+}
+footer{
+	width: 100%;
+	height: 58px;
+	background-color: #2f2f38;
+	font-family: "SimSun";
+	font-size: 12px;
+	color: #fff;
+	position: relative;
+}
+footer span{
+	position: absolute;
+	top: 30px;
+	left: 99px;
+}
+footer a{
+	position: absolute;
+	top: 33px;
+	right: 40px;
+	color: #fff;
+}

@@ -1,0 +1,792 @@
+*{	
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+a{
+	text-decoration: none;
+}
+input,button,select,textarea,img,a{
+	outline:none
+}
+/* header start*/
+header{
+	height: 56px;
+	width: 100%;
+	background-color: #2189bf;
+	overflow: hidden;  /* 小于一定尺寸时，搜索框会隐藏 */
+}
+header a img{
+	float: left;
+	margin: 10px 50px;
+}
+header .group{
+	float: right;
+	margin: 14px 94px;
+	position: relative;
+}
+header .group input{
+	width: 268px;
+	height: 28px;
+	border-radius: 14px;
+	border:none;
+	font-size: 18px;
+	padding-left: 45px;
+}
+header .group > img{
+	position: absolute;
+	top: 6px;
+	left: 20px;
+}
+header .group .login{
+	float: right;
+	margin-left: 21px;
+	margin-top: 6px;
+}
+header .group a{
+	float: right;
+	font-family: "AdobeHeitiStd-Regular", "Microsoft YaHei";
+	font-size: 12px;
+	color: #fff;
+	line-height: 16px;
+	margin-left: 3px;
+}
+/* header end / section start*/
+section{
+	width: 1280px;
+	margin: 0px auto;
+}
+/* section aside start */
+
+aside{
+	background-color: #2a2e3d;
+	width: 260px;
+	height: 1210px;
+	padding-top: 18px;
+	float: left;
+}
+.circle{
+	display: inline-block;
+	float: left;
+	width: 58px;
+	height: 58px;
+	border-radius: 29px;
+	border:2px solid #b9babe;
+	margin-left: 45px;
+}
+.circle img{
+	margin:4px;
+} 
+.head  a{
+	font-family: "SimHei";
+	font-size: 16px;
+	color: #f6f5f5;
+	line-height: 58px;
+	margin-left: 18px;
+}
+.info a{
+	font-family: "SimSun";
+	font-size: 12px;
+	color: #6e8095;
+	display: inline-block;
+	margin-left: 25px;
+}
+.info span{
+	font-family: "SimHei";
+	font-size: 16px;
+}
+.info a:first-child{
+	border-right: 2px solid #323647;
+	margin: 24px 0px 22px 63px;
+	padding-right: 31px;
+}
+.change{
+	position: relative;
+	width: 100%;
+	height: 50px;
+	background-color:  transparent;
+	overflow: hidden;
+	font-family: "SimHei";
+	font-size: 12px;
+	color: #6e8095;
+	line-height: 50px;
+	padding-left: 70px;
+	cursor: pointer;
+}
+aside input{
+	display: none;
+}
+.change > img{
+	position:absolute; 
+	left: 45px;
+	top: 15px;
+	clip:rect(0px,12px,12px,0px);
+}
+.change > span{
+	width: 100%;
+	float: left;
+}
+.change:hover, .change:hover > img{
+	top: 3px;
+	clip:rect(12px,12px,24px,0px);
+	background-color:  #383d4e;
+	height: auto;
+	color: #e4e4e7;
+}
+.change > div{
+	display: inline-block;
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 30px;
+	overflow: hidden;
+	cursor: pointer; 
+}
+.change > div > img{
+	position:absolute; 
+	left: 15px;
+	top: 9px;
+	clip:rect(0px,12px,12px,0px);
+}
+.change > div > img:first-child{
+	left: 0px;
+}
+.change > div span{
+	font-family: "SimHei";
+	font-size: 12px;
+	color: #6e8095;
+	line-height: 30px;
+	padding-left: 33px;
+	width: 100%;
+	float: left;
+}
+.change > div .last{
+	height: 35px;
+}
+.change > div:hover, .change > div:hover > img{
+	top: -3px;
+	clip:rect(12px,12px,24px,0px);
+	height: auto;
+}
+.change > div:hover > span{
+	color: #e4e4e7;
+}
+.change > div > div{
+	display: inline-block;
+	float: left;
+	position: relative;
+	width: 100%;
+	height: 30px;
+	overflow: hidden;
+	cursor: pointer; 
+}
+.change > div > div img{
+	position:absolute; 
+	left: 15px;
+	top: 9px;
+	clip:rect(0px,12px,12px,0px);
+}
+.change > div > div:hover, .change  > div > div:hover > img{
+	top: -3px;
+	clip:rect(12px,12px,24px,0px);
+	height: auto;
+}
+.change > div > div:hover > span{
+	color: #e4e4e7;
+}
+/* section aside end / section mian start */
+main{
+	background-color: #eee;
+	width: 1020px;
+	height: 1210px;
+	float: left;
+}
+main > .head{
+	width: 100%;
+	height: 31px;
+	background-color: #fff;
+	padding-left: 30px;
+}
+main > .head span{
+	font-family: "SimHei";
+	font-size: 12px;
+	color: #aaa;
+	line-height: 31px;
+}
+main > .head span span{
+	color: #6898c2;
+}
+.content{
+	padding: 19px 70px 0px 60px;
+}
+.search{
+	width: 100%;
+	height: 86px;
+	padding-top: 15px;
+	font-family: "SimHei";
+	font-size: 12px;
+	color: #aaa;
+	border:1px solid #dcdee0;
+	margin-bottom: 9px;
+	background-color: #fff;
+}
+.search > div{
+	float: left;
+}
+
+.search select{
+	height: 26px;
+	width: 71px;
+	border: solid 1px #cbcbcb;
+	font-family: "SimHei";
+	font-size: 12px;
+	color: #323333;
+	padding:0px  20px 0px 11px;
+	cursor: pointer;
+	margin-left: 10px;
+	/*将默认的select选择框样式清除*/
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	/*在选择框的最右侧中间显示小箭头图片*/
+	background: url("../img/select.png") no-repeat scroll right bottom transparent;
+}
+.search input{
+	height: 26px;
+	width: 121px;
+	border: solid 1px #cbcbcb;
+	font-family: "SimHei";
+	font-size: 12px;
+	color: #323333;
+	padding-left:11px;
+	cursor: pointer;
+	margin: 0px 9px 0px 10px;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
+.search select:hover{
+	background-position: right top;
+}
+
+.search .group-1{
+	margin-left: 30px;
+}
+.search .group-2{
+	position: relative;
+	margin-left: 30px;
+	width: 219px;
+}
+.search .group-2 select{
+	width: 121px;
+	margin-bottom: 4px;
+}
+.search .group-2 div{
+	width: 28px;
+	height: 38px;
+	color: #fff;
+	display: inline-block;
+	position: absolute;
+	top: 9px;
+	margin-left: 1px;
+	background: url("../img/change.png") no-repeat scroll center transparent;
+} 
+.search .group-2 p{
+	width: 100%;
+	text-align: right;
+	line-height: 38px;
+	padding-right: 2px;
+	cursor: pointer;
+}
+.search .group-3{
+	width: 320px;
+}
+.search .group-3 select{
+	width: 71px;
+	margin-bottom: 4px;
+	margin-right: 9px;
+}
+.search .group-3 select:first-of-type{
+	margin-left: 4px;
+}
+.search .group-3 select:last-of-type{
+	margin-left: 4px;
+	width: 121px;
+}
+.search .group-3 ~ button, .project-2 button{
+	width: 51px;
+	height: 26px;
+	background-color: #388bc2;
+	color: #fff;
+	border:none;
+	border-radius: 2px;
+	font-family: "SimHei";
+	font-size: 12px;
+	margin-top: 15px;
+	cursor: pointer;
+}
+
+.content .history{
+	width: 100%;
+	height: 65px;
+	font-family: "Microsoft YaHei";
+	background-color: transparent; 
+}
+.history button{
+	float: left;
+	width: 31px;
+	height: 100%;
+	border: solid 1px #cbcbcb;
+	margin-right: 4px;
+	background:  #fff url("../img/arrow.png") no-repeat scroll left center;
+	cursor: pointer;
+}
+.history .down{
+	background-position: right center;
+}
+.history > div{
+	float: left;
+	margin-right: 4px;
+	width:  111px;
+	height: 65px;
+	border: 1px solid #cbcbcb;
+	background-color: #fff;
+	cursor: pointer;
+}
+.history > .option:hover, .history > .default{
+	border-top: 4px solid #4288c8;
+}
+.history > .option:hover p:first-child, .history > .default p:first-child{
+	margin-top: 7px;
+}
+.history .time{
+	font-size: 12px;
+	color: #323333;
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+}
+.history .number{
+	font-size: 21px;
+	color: #ec6500;
+	width: 100%;
+	text-align: center;
+	margin-top: 4px;
+}
+.history .yuan{
+	font-size: 12px;
+	color: #aaa;
+}
+.history .history{
+	width: 130px;
+	margin-right: 0px;
+	background-color: #fff;
+	font-size: 12px;
+	color: #535353;
+	line-height: 65px;
+}
+.history .history img{
+	float: left;
+	margin: 17px 11px 0px 19px;
+}
+.content > p{
+	font-family: "Microsoft YaHei";
+	font-size: 12px;
+	color: #323333;
+	line-height: 22px;
+	margin-top: 16px;
+}
+.content .color{
+	background-color: transparent;
+}
+.color > div{
+	width: 201px;
+	height: 71px;
+	float: left;
+	margin-right: 29px;
+	margin-bottom: 14px;
+	border: 1px solid #cbcbcb;
+	border-radius: 2px;
+	font-family: "SimHei";
+	padding: 12px 15px 0px 8px;
+	background-color: #fff;
+}
+.color > div .number{
+	font-size: 12px;
+	color: 323333;
+	line-height: 30px;
+}
+.color > div .info{
+	font-size: 10px;
+	line-height: 20px;
+	color: #aaa;
+}
+.color > div > div{
+	width: 61px;
+	height: 47px;
+	float: right;
+}
+
+.color .boxGreen{
+	border-left:  4px solid #43b29e;
+}
+.color .boxGreen div{
+	background-color: #43b29e;
+}
+.color .boxBlue{
+	border-left:  4px solid #388ac1;
+}
+.color .boxBlue div{
+	background-color: #388ac1;
+}
+.color .boxRed{
+	border-left:  4px solid #d04a36;
+}
+.color .boxRed div{
+	background-color: #d04a36;
+}
+.color .boxYellow{
+	border-left:  4px solid #e2cd46;
+	margin-right: 0px;
+	width: 200px;
+}
+.color .boxYellow div{
+	background-color: #e2cd46;
+}
+.project{
+	float: left;
+	border: 1px solid #cbcbcb;
+	border-radius: 5px;
+	background-color: #fff;
+	height: 356px;
+	margin-bottom: 9px;
+}
+.project-1, .project-3{
+	margin-right: 9px;
+}
+
+.project .head{
+	height: 41px;
+	width: 100%;
+	background-color: #f4f5f7;
+	border-bottom: 1px solid #e7e8eb;
+	font-family: "SimHei";
+	font-size: 12px;
+	line-height: 44px;
+	color: #aaa;
+	padding-left: 21px;
+}
+.project-1{
+	width: 531px;
+}
+.project-1 .main{
+	margin-left: 20px;
+
+	position: relative;
+}
+.project-1 .main li{
+	float: left;
+	list-style: none;
+	width: 86px;
+	height: 28px;
+	font-family: "Microsoft YaHei";
+	font-size: 12px;
+	color: #535353;
+	text-align: center;
+	line-height: 27px;
+	margin-top: 12px;
+	margin-right: 3px;
+	border: none;
+	border-radius: 3px;
+	background-color: #ededf0;
+	cursor: pointer;
+}
+.project-1 li.checked, .project-1 li:hover{
+	background-color: #fff;
+	border: 1px solid #cbcbcb;
+	border-bottom: none;
+	line-height: 25px;
+	position: relative;
+}
+.project-1 .forms{
+	width: 491px;
+	height: 253px;
+	position: absolute;
+	top: 39px;
+	border: 1px solid #cbcbcb;
+	border-radius: 3px;
+}
+.project-1 table{
+	border-collapse: collapse;
+	margin: 28px 38px;
+}
+.project-1 td{
+	width: 101px;
+	height: 30px;
+	border: 1px solid #ddd;
+	font-family: "SimSun";
+	font-size: 12px;
+	color: #535353;
+	padding-left: 18px;
+}
+.project-1 td.click, .project-1 td:hover{
+	background-color: #f4f5f6;
+}
+.project-2 {
+	width: 350px;
+	font-family: "Microsoft YaHei";
+}
+.project-2 > p{
+	margin-left: 52px;
+}
+.project-2 > p, .project-2 .left p, .project-2 .right p{
+	font-size: 12px;
+	line-height: 12px;
+}
+.project-2 .title{
+	color: #c3c2c2;
+	line-height: 24px;
+}
+.project-2 > .title:first-of-type{
+	margin-top: 12px;
+}
+.project-2 .detail{
+	color: #535353;
+}
+.project-2 .left, .project-2 .right{
+	float: left;
+	border-top: 1px solid #e8e8e8;
+	margin-top: 9px;
+	height: 45px;
+}
+.project-2 .left{
+	margin-left: 36px;
+	padding-left: 16px;
+	border-right: 1px solid #e8e8e8;
+	width: 96px;
+	
+}
+.project-2 .right{
+	padding-left: 11px;
+	width: 185px;
+}
+.project-2 .left p,.project-2 .right p{
+	line-height: 20px;
+}
+.project-2 .line{
+	clear: both;
+	border-top: 1px solid #e8e8e8;
+	margin-left: 36px;
+	padding-left: 16px;
+	width: 281px;
+}
+.project-2 .bottom{
+	margin-top: 110px;
+	border-top: 1px solid #e8e8e8;
+	margin-left: 36px;
+	padding-left: 16px;
+	width: 281px;
+}
+
+.project-2 .bottom button{
+	margin-top: 4px;
+	float: right;
+}
+.project-2 .bottom input{
+	display: none;
+}
+.project-2 .bottom .check,.project-2 .bottom .check:active{
+	width: 14px;
+	height: 14px;
+	float: left;
+	margin-top: 10px;
+	border: 1px solid  #d6d6d6;
+	background-color: #fff;
+	cursor: pointer;
+}
+.project-2 .bottom label:first-of-type{
+	font-size: 12px;
+	color: #c3c2c2;
+	line-height: 34px;
+	margin-left: 8px;
+	cursor: pointer;
+}
+.project-2 .bottom .check:hover, .project-2 .bottom label:hover ~ .check{
+	background: #d6d6d6 url(../img/checkbox.png) no-repeat center;
+}
+.project-3{
+	width: 351px;
+}
+.project-3 select,.project-3 button{
+	margin-top: 10px;
+	margin-bottom: 9px;
+	float: left;
+	height: 23px;
+	font-family: "SimHei";
+	font-size: 12px;
+	color: #535353;
+	border: 1px solid #cecece; 
+	background-color: #fff;
+	cursor: pointer;
+	padding-left: 5px;
+}
+.project-3 select{
+	margin-right: 5px;
+}
+.project-3 .year,.project-3 button{
+	width: 64px;
+}
+.project-3 .month{
+	width: 86px;
+	padding-left: 25px;
+}
+.project-3 .day{
+	width: 76px;
+}
+.project-3 .year{
+	margin-left: 22px;
+}
+.project-3 select{
+	/*将默认的select选择框样式清除*/
+	appearance:none;
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	/*在选择框的最右侧中间显示小箭头图片*/
+	background: url("../img/select2.png") no-repeat scroll right center transparent;
+}
+.project-3 .main{
+	position: relative;
+}
+.project-3 .borderLine{
+	height: 30px;
+	width: 311px;
+	border-top: 2px solid #a9cfec;
+	border-bottom:  2px solid #e1e1e2;
+	position: absolute;
+	top: 44px;
+	left: 19px;
+}
+.project-3 table{
+	font-family: "SimHei";
+	margin-left: 21px;
+}
+.project-3 table tr td{
+	width: 42px;
+	height: 42px;
+	cursor: pointer;
+}
+.project-3 table th{
+	font-weight: normal;
+	font-size: 12px;
+	color: #535353;
+	height: 30px;
+}
+.project-3 table p{
+	font-size: 11px;
+	text-align: center;
+	color: #323333;
+}
+.project-3 table .festival,.project-3 table .weekend{
+	color: #c9161d;
+}
+.project-3 table .click, .project-3 table td:hover{
+	border: 1px solid #f5ca39;
+}
+.project-4{
+	width: 530px;
+}
+.project-4 .main{
+	
+}
+.project-4 table{
+	font-family: "SimHei";
+	font-size: 12px;
+	color: #323333;
+	border-collapse: collapse;
+	margin-left: 40px;
+	margin-top: 18px;
+
+}
+.project-4 table th{
+	font-size: 13px;
+	color: #231815;
+}
+.project-4 table td,.project-4 table th{
+	border: 1px solid #cbcbcb;
+	height: 25px;
+	cursor: pointer;
+}
+
+.project-4 table th{
+	font-weight: normal;
+}
+.project-4 table tr td:first-child{
+	width: 67px;
+	text-align: center;
+}
+.project-4 table tr td:nth-child(2){
+	width: 90px;
+	text-align: center;
+}
+.project-4 table tr th:last-child{
+	text-align: left;
+	padding-left: 30px;
+}
+.project-4 table tr td:last-child{
+	width: 290px;
+}
+.project-4 table tr span{
+	display: inline-block;
+	width: 82px;
+	text-align: right;
+	float: left;
+}
+.project-4 table .bar{
+	display: inline-block;
+	float: left;
+	width: 167px;
+	height: 5px;
+	background-color: #dcdcdc;
+	margin-left: 20px;
+	margin-top: 5px;
+}
+.project-4 table .prograss{
+	height: 5px;
+	background-color: #7ecaf0;
+}
+.project-4 table .top-1{
+	width: 142px;
+	background-color: #ed6e52;
+}
+.project-4 table .top-2{
+	width: 121px;
+	background-color: #ef8150;
+}
+.project-4 table .top-3{
+	width: 104px;
+	background-color: #f19f4f;
+}
+.project-4 table .top-4{
+	width: 97px;
+	
+}
+.project-4 table .top-5{
+	width: 86px;
+}
+.project-4 table .top-6{
+	width: 80px;
+}
+.project-4 table .top-7{
+	width: 74px;
+}
+.project-4 table .top-8{
+	width: 64px;
+}
+.project-4 table .top-9{
+	width: 60px;
+}
+.project-4 table .top-10{
+	width: 54px;
+}
+.project-4 table tr:hover, .project-4 table .default{
+	background-color: #f4f5f7;
+}

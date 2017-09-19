@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+	<div class="form">
+		<form action="test.html" method="get">
+			<input type="radio" name="schoolCheck" checked="checked" id="inSchool">
+			<label for="inSchool">在校生</label>
+			<input type="radio" name="schoolCheck" id="outSchool">
+			<label for="outSchool">非在校生</label>
+			<div id="selectSchool">
+				<label for="city">学校</label>
+				<select name="city" id="city">
+					<option name="bj" selected="selected">北京</option>
+					<option name="sh">上海</option>
+					<option name="jz">浙江</option>
+					<option name="gd">广东</option>
+				</select>
+				<select name="school" id="school"></select>
+			</div>
+			<div id="selectWork">
+				<label for="work">就业单位</label>
+				<input type="text" id="work">
+			</div>
+
+			<input type="submit" name="" value="Submit" id="submit">
+		</form>
+	</div>
+</body>
+</html>

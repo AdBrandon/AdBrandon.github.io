@@ -1,0 +1,33 @@
+*{
+	margin:0px;
+	padding: 0px;
+}
+.main{
+	width: 400px;
+	height: 200px;
+	background-color: #ccc;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -200px;
+	margin-top: -100px;
+	overflow: hidden;
+}
+.left{
+	width: 100px;
+	height: 100px;
+	background-color: #fc0;
+	position: absolute;
+	top: -50px;
+	left: -50px;
+	border-radius:50px;
+}
+.right{
+	width: 100px;
+	height: 100px;
+	background-color: #fc0;
+	position: absolute;
+	right: -50px;
+	bottom: -50px;
+	border-radius:50px;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="javascript/index.js"></script>
+	<style type="text/css">
+		body{
+			width: 700px;
+			margin: 0 auto;
+		}
+		.box1,.box2,.box3,.box4{
+			margin: 20px 8px;
+			width: 100%;
+			border: 1px solid #555;
+			display: flex;
+			background-color: #fff;
+		}
+		.box1{
+			height: 200px;
+			margin: 10px auto;
+		}
+		#tree{
+			border: 1px solid #555;
+			padding: 20px;
+			margin: 20px 0;
+		}
+		
+	</style>
+</head>
+<body>
+<div  id="tree">
+	<div class="box1">
+		<div class="box2">
+			<div class="box3">
+				<div class="box4"></div>
+				<div class="box4"></div>
+			</div>
+			<div class="box3">
+				<div class="box4"></div>
+				<div class="box4"></div>
+			</div>
+		</div>
+		<div class="box2">
+			<div class="box3">
+				<div class="box4"></div>
+				<div class="box4"></div>
+			</div>
+			<div class="box3">
+				<div class="box4"></div>
+				<div class="box4"></div>
+			</div>
+		</div>
+	</div>
+	<div class="box1">
+		<div class="box2">
+			<div class="box3">
+				<div class="box4"></div>
+				<div class="box4"></div>
+			</div>
+			<div class="box3">
+				<div class="box4"></div>
+				<div class="box4"></div>
+			</div>
+		</div>
+		<div class="box2">
+			<div class="box3">
+				<div class="box4"></div>
+				<div class="box4"></div>
+			</div>
+			<div class="box3">
+				<div class="box4"></div>
+				<div class="box4"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<button id="inOrder">中序遍历(升序)</button>
+<button id="inOrderDesc">中序遍历(降序)</button>
+<button id="preOrder">先序遍历</button>
+<button id="postOrder">后续遍历</button>
+</body>
+</html>
